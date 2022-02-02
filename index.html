@@ -12,4 +12,62 @@
         if (location.protocol === 'http:') {
     window.location.replace("https://www.guessoword.com");
 }
-    </script></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div></body></html>
+    </script><style>
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 24px;
+  background: white;
+  outline: none;
+  opacity: 0.8;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+input[type="range"]:hover {
+  opacity: 8;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 64px;
+  height: 32px;
+  background: gray;
+  cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 25px;
+  height: 04px;
+  background: white;
+  cursor: pointer;
+}
+
+button {
+  background-color: gray;
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+select {
+  // A reset of styles, including removing the default dropdown arrow
+  appearance: none;
+  // Additional resets for further consistency
+  background-color: transparent;
+  border: none;
+  padding: 0 1em 0 0;
+  margin: 0;
+  width: 60%;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+}</style></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div></body></html>
