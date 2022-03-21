@@ -1,4 +1,5 @@
 
+
 <!doctype html><html lang="en"><head><meta charset="utf-8"/><link rel="icon" href="/favicon.png"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="theme-color" content="blue"/><meta name="description" content="Guessoword is a free word guessing game. Play Now! If you're bored and have nothing to do, this game is guaranteed to keep you occupied for hours. games like wordle, wordle alternatives, wordle unlimited"><meta name="keywords" content="Wordle, Wordle alternative, Wordle unblocked, Wordle unlimited, Guessoword, word guessing game, word guessing game like wordle"><title>Guessoword - Free Word Guessing Game</title><script defer="defer" src="static/js/main.1aaff1f5.js"></script><link href="static/css/main.9276e807.css" rel="stylesheet"><!-- Global site tag (gtag.js) - Google Analytics -->
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3QRF7KY6MX"></script>
@@ -122,4 +123,49 @@ select {
   font-size: inherit;
   cursor: inherit;
   line-height: inherit;
-}</style></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div></body></html>
+}
+
+.alert {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  opacity: 1;
+  transition: opacity 0.6s;
+  margin-bottom: 15px;
+}
+
+.alert.success {background-color: #04AA6D;}
+.alert.info {background-color:  gray;}
+.alert.warning {background-color: #ff9800;}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+</style></head><body><div class="alert info">
+  <span class="closebtn">&times;</span>  
+  <strong>New!</strong> Introducing Sixordle - <a style="color: white" target="_blank" href="https://sixordle.guessoword.com">Play Here</a>
+</div>
+
+<script>
+var close = document.getElementsByClassName("closebtn");
+var i;
+
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function(){
+    var div = this.parentElement;
+    div.style.opacity = "0";
+    setTimeout(function(){ div.style.display = "none"; }, 600);
+  }
+}
+</script><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div></body></html>
