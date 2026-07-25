@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>About — Guessoword</title>
+<meta name="description" content="Guessoword is a small, independent word-games studio founded in 2022, best known for Sixordle.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -30,6 +31,8 @@
     justify-content: space-between;
     padding: clamp(10px, 2vh, 18px) clamp(16px, 4vw, 40px);
     border-bottom: 1px solid var(--line);
+    flex-wrap: wrap;
+    gap: 10px;
   }
   .logo {
     font-family: 'JetBrains Mono', monospace;
@@ -40,14 +43,14 @@
     text-decoration: none;
   }
   .logo .dot { width: 0.5em; height: 0.5em; background: var(--moss); border-radius: 2px; display: inline-block; }
-  .nav-links { display: flex; align-items: center; gap: clamp(14px, 2.4vw, 24px); }
+  .nav-links { display: flex; align-items: center; gap: clamp(12px, 2.2vw, 22px); flex-wrap: wrap; }
   .nav-link {
     font-family: 'JetBrains Mono', monospace;
-    font-size: clamp(0.75rem, 1.6vw, 0.85rem);
+    font-size: clamp(0.72rem, 1.6vw, 0.85rem);
     color: var(--ink-soft);
     text-decoration: none;
   }
-  .nav-link:hover { color: var(--ink); }
+  .nav-link.active, .nav-link:hover { color: var(--ink); }
   .nav-cta {
     font-family: 'JetBrains Mono', monospace;
     font-size: clamp(0.7rem, 1.6vw, 0.85rem);
@@ -63,10 +66,10 @@
 
   main {
     flex: 1 1 auto;
-    max-width: 640px;
+    max-width: 680px;
     width: 100%;
     margin: 0 auto;
-    padding: clamp(32px, 8vh, 64px) clamp(20px, 5vw, 40px);
+    padding: clamp(32px, 8vh, 64px) clamp(20px, 5vw, 40px) clamp(56px, 10vh, 80px);
   }
 
   .eyebrow {
@@ -82,6 +85,11 @@
     line-height: 1.1;
     margin: 0 0 20px;
     letter-spacing: -0.01em;
+  }
+  h2 {
+    font-size: clamp(1.2rem, 3vw, 1.4rem);
+    margin: 36px 0 14px;
+    letter-spacing: -0.005em;
   }
   p {
     font-size: 1rem;
@@ -113,11 +121,24 @@
     color: var(--ink-soft);
   }
 
+  .timeline { list-style: none; padding: 0; margin: 8px 0 24px; }
+  .timeline li {
+    display: flex; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line);
+  }
+  .timeline li:last-child { border-bottom: none; }
+  .timeline .t-year {
+    font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--moss-dark);
+    flex: 0 0 auto; width: 4.5em; font-size: 0.9rem;
+  }
+  .timeline .t-desc { color: var(--ink-soft); font-size: 0.95rem; line-height: 1.5; }
+  .timeline .t-desc strong { color: var(--ink); }
+
   .cta {
     display: inline-flex;
     align-items: center;
     gap: 8px;
     margin-top: 8px;
+    margin-right: 10px;
     background: var(--ink);
     color: var(--bg);
     text-decoration: none;
@@ -139,6 +160,8 @@
     font-family: 'JetBrains Mono', monospace;
     font-size: clamp(0.68rem, 1.4vw, 0.78rem);
     color: var(--ink-soft);
+    flex-wrap: wrap;
+    gap: 6px;
   }
   footer a { text-decoration: underline; text-underline-offset: 2px; }
 
@@ -152,7 +175,10 @@
 <nav>
   <a class="logo" href="index.html"><span class="dot"></span>GUESSOWORD</a>
   <div class="nav-links">
-    <a class="nav-link" href="about.html">About</a>
+    <a class="nav-link" href="how-to-play.html">How to Play</a>
+    <a class="nav-link" href="strategy.html">Strategy</a>
+    <a class="nav-link" href="faq.html">FAQ</a>
+    <a class="nav-link active" href="about.html">About</a>
     <a class="nav-cta" href="https://sixordle.guessoword.com">Play Sixordle</a>
   </div>
 </nav>
@@ -176,11 +202,37 @@
 
   <p>Thousands of people still come back to solve Sixordle every day. We're a small, independent word-games studio — no investors, no growth hacks, just puzzles built to be worth the few minutes they take.</p>
 
+  <h2>How Sixordle came about</h2>
+  <p>The idea started from a simple frustration: single-board word-guessing games are great for five minutes, but they're solved quickly once you know the format. Stacking six boards into one puzzle, sharing a single pool of guesses across all of them, turned out to need a genuinely different kind of thinking — closer to juggling six small logic puzzles than repeating one. That tension between "the rules you already know" and "a much harder problem" is what we kept refining after the first version shipped in March 2022.</p>
+
+  <h2>A short timeline</h2>
+  <ul class="timeline">
+    <li>
+      <span class="t-year">FEB 2022</span>
+      <span class="t-desc"><strong>Guessoword founded.</strong> Started as a side project with one goal: no clutter between a player and a puzzle.</span>
+    </li>
+    <li>
+      <span class="t-year">MAR 2022</span>
+      <span class="t-desc"><strong>Sixordle launches.</strong> The six-boards-at-once format goes live as the studio's first full game.</span>
+    </li>
+    <li>
+      <span class="t-year">SINCE</span>
+      <span class="t-desc"><strong>100,000+ players.</strong> Growth has come almost entirely from players sharing the game directly, without paid acquisition.</span>
+    </li>
+    <li>
+      <span class="t-year">TODAY</span>
+      <span class="t-desc"><strong>Still independent.</strong> One small team, a daily puzzle, and no plans to bolt on accounts or a subscription tier.</span>
+    </li>
+  </ul>
+
+  <h2>What we believe about word games</h2>
+  <p>A good daily puzzle should respect the few minutes someone gives it. That means fast load times, no forced sign-in, and rules that are easy to learn but leave real room to get better at — which is why Sixordle keeps the exact tile logic players already know from single-board games, rather than inventing a new mechanic to learn from scratch. If you're new to the format, the <a href="how-to-play.html">How to Play</a> guide walks through the rules end to end, and the <a href="strategy.html">Strategy</a> page covers starter words and how to manage six boards without losing track of any of them.</p>
+
   <a class="cta" href="https://sixordle.guessoword.com">Play Sixordle</a>
   <a class="cta" href="https://buymeacoffee.com/sixordle">Donate*</a>
-  
-  <br><br><p>*Currently we lose hundreds of dollars a year, but have always kept Sixordle free. You can donate as little as $5. If the game has been a part of your life for a while and is valuable in your eyes, buy us a coffee! Add your name in the donation note and we'll create a credits page sometime.</p>
-  
+
+  <p style="margin-top:20px;">*Currently we lose hundreds of dollars a year, but have always kept Sixordle free. You can donate as little as $5. If the game has been a part of your life for a while and is valuable in your eyes, buy us a coffee! Add your name in the donation note and we'll create a credits page sometime.</p>
+
   <p>Email: contact@guessoword.com</p>
 </main>
 
