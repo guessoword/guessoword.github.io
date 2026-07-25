@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Guessoword — small, sharp word games</title>
+<meta name="description" content="Guessoword makes tight, well-tuned word games, including Sixordle — solve six five-letter words at once with a shared pool of guesses.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -24,16 +25,14 @@
   * { box-sizing: border-box; }
 
   html, body {
-    height: 100%;
     margin: 0;
-    overflow: hidden;
     background: var(--bg);
     color: var(--ink);
     font-family: 'Manrope', sans-serif;
   }
 
   body {
-    height: 100dvh;
+    min-height: 100dvh;
     display: flex;
     flex-direction: column;
     background:
@@ -51,6 +50,8 @@
     justify-content: space-between;
     padding: clamp(10px, 2vh, 18px) clamp(16px, 4vw, 40px);
     border-bottom: 1px solid var(--line);
+    flex-wrap: wrap;
+    gap: 10px;
   }
 
   .logo {
@@ -61,6 +62,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    text-decoration: none;
   }
 
   .logo .dot {
@@ -74,12 +76,13 @@
   .nav-links {
     display: flex;
     align-items: center;
-    gap: clamp(14px, 2.4vw, 24px);
+    gap: clamp(12px, 2.2vw, 22px);
+    flex-wrap: wrap;
   }
 
   .nav-link {
     font-family: 'JetBrains Mono', monospace;
-    font-size: clamp(0.75rem, 1.6vw, 0.85rem);
+    font-size: clamp(0.72rem, 1.6vw, 0.85rem);
     color: var(--ink-soft);
     text-decoration: none;
   }
@@ -103,17 +106,16 @@
     color: var(--bg);
   }
 
-  /* MAIN */
-  main {
-    flex: 1 1 auto;
+  /* HERO */
+  .hero {
+    flex: 0 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: clamp(6px, 1.5vh, 20px) clamp(16px, 5vw, 40px);
-    gap: clamp(6px, 1.4vh, 14px);
-    min-height: 0;
+    padding: clamp(28px, 7vh, 56px) clamp(16px, 5vw, 40px) clamp(20px, 4vh, 40px);
+    gap: clamp(8px, 1.6vh, 16px);
   }
 
   .eyebrow {
@@ -132,6 +134,13 @@
     line-height: 1.08;
     margin: 0;
     letter-spacing: -0.01em;
+  }
+
+  h2 {
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    line-height: 1.2;
+    margin: 0 0 14px;
+    letter-spacing: -0.005em;
   }
 
   .lede {
@@ -211,6 +220,61 @@
     margin: 0;
   }
 
+  /* CONTENT SECTIONS */
+  .content {
+    flex: 1 1 auto;
+    max-width: 780px;
+    width: 100%;
+    margin: 0 auto;
+    padding: clamp(20px, 4vh, 36px) clamp(20px, 5vw, 40px) clamp(48px, 8vh, 72px);
+  }
+
+  section.block {
+    padding: clamp(28px, 4vh, 40px) 0;
+    border-top: 1px solid var(--line);
+  }
+  section.block:first-child { border-top: none; padding-top: 0; }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin: 0 0 16px;
+    text-align: left;
+  }
+  p strong { color: var(--ink); font-weight: 600; }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 8px;
+  }
+  .card {
+    background: #FFFFFF;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: left;
+    text-decoration: none;
+    display: block;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+  .card:hover { border-color: var(--moss); transform: translateY(-2px); }
+  .card-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--ink);
+    margin: 0 0 8px;
+  }
+  .card-desc {
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
   /* FOOTER */
   footer {
     flex: 0 0 auto;
@@ -222,6 +286,8 @@
     font-family: 'JetBrains Mono', monospace;
     font-size: clamp(0.65rem, 1.3vw, 0.75rem);
     color: var(--ink-soft);
+    flex-wrap: wrap;
+    gap: 6px;
   }
 
   footer a {
@@ -240,14 +306,17 @@
 <body>
 
 <nav>
-  <a class="logo" href="index.html" style="text-decoration:none; color: var(--ink);"><span class="dot"></span>GUESSOWORD</a>
+  <a class="logo" href="index.html"><span class="dot"></span>GUESSOWORD</a>
   <div class="nav-links">
+    <a class="nav-link" href="how-to-play.html">How to Play</a>
+    <a class="nav-link" href="strategy.html">Strategy</a>
+    <a class="nav-link" href="faq.html">FAQ</a>
     <a class="nav-link" href="about.html">About</a>
     <a class="nav-cta" href="https://sixordle.guessoword.com">Play Sixordle</a>
   </div>
 </nav>
 
-<main>
+<div class="hero">
   <p class="eyebrow">WORD GAMES</p>
   <h1>Small puzzles.<br>Sharp thinking.</h1>
   <p class="lede">Guessoword makes tight, well-tuned word games built for a coffee break — no accounts, no clutter, just today's puzzle.</p>
@@ -299,7 +368,40 @@
 
   <a class="cta" href="https://sixordle.guessoword.com">Play Sixordle →</a>
   <p class="cta-url">sixordle.guessoword.com</p>
-</main>
+</div>
+
+<div class="content">
+
+  <section class="block">
+    <h2>What is Sixordle?</h2>
+    <p>Sixordle takes the familiar word-guessing format — guess a five-letter word, get green and yellow feedback — and stacks six hidden words into a single puzzle, all checked against the same pool of guesses. It rewards the same letter-frequency instincts as any word game, plus a second skill: managing six boards' worth of information at once instead of one. A new puzzle is available daily, and there's no faster way to learn it than playing a round.</p>
+  </section>
+
+  <section class="block">
+    <h2>Learn the game</h2>
+    <p>Whether you're picking up word-guessing games for the first time or you've solved hundreds of single-board puzzles and want the multi-board version explained, these guides cover the rules, the tile meanings, and the strategy that's specific to solving six words at once.</p>
+    <div class="card-grid">
+      <a class="card" href="how-to-play.html">
+        <p class="card-title">HOW TO PLAY</p>
+        <p class="card-desc">Rules, tile colors, and a worked example walking through a real guess.</p>
+      </a>
+      <a class="card" href="strategy.html">
+        <p class="card-title">STRATEGY</p>
+        <p class="card-desc">Starter words, letter frequency, and how to manage six boards without losing track.</p>
+      </a>
+      <a class="card" href="faq.html">
+        <p class="card-title">FAQ</p>
+        <p class="card-desc">Answers on guess limits, puzzle timing, accounts, and more.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Why we build it this way</h2>
+    <p>Guessoword is deliberately small. There's no account wall between you and the puzzle, no interstitial before the game loads, and no design decisions made to maximize time-on-page rather than the puzzle itself. That's a constraint we've kept since <a href="about.html">the studio started in 2022</a>, and it's the reason people tend to come back daily rather than open the site once and bounce.</p>
+  </section>
+
+</div>
 
 <footer>
   <span>© 2026 Guessoword · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></span>
