@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Play Sixordle — Guessoword</title>
+<meta name="description" content="A complete guide to playing Sixordle: the rules, the tile colors, a worked example, and tips for solving six words at once.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F6F4EE;
+    --ink: #262420;
+    --ink-soft: #6B6558;
+    --moss: #4F6F52;
+    --moss-dark: #3C5A3F;
+    --mustard: #C99A3B;
+    --tile-off: #E4DFD2;
+    --line: #DAD4C6;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink); font-family: 'Manrope', sans-serif; }
+  body { min-height: 100dvh; display: flex; flex-direction: column; }
+  a { color: inherit; }
+
+  nav {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: clamp(10px, 2vh, 18px) clamp(16px, 4vw, 40px);
+    border-bottom: 1px solid var(--line);
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .logo {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: clamp(0.95rem, 2vw, 1.15rem);
+    letter-spacing: 0.02em;
+    display: flex; align-items: center; gap: 8px;
+    text-decoration: none;
+  }
+  .logo .dot { width: 0.5em; height: 0.5em; background: var(--moss); border-radius: 2px; display: inline-block; }
+  .nav-links { display: flex; align-items: center; gap: clamp(12px, 2.2vw, 22px); flex-wrap: wrap; }
+  .nav-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(0.72rem, 1.6vw, 0.85rem);
+    color: var(--ink-soft);
+    text-decoration: none;
+  }
+  .nav-link.active, .nav-link:hover { color: var(--ink); }
+  .nav-cta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(0.7rem, 1.6vw, 0.85rem);
+    font-weight: 500;
+    text-decoration: none;
+    padding: 8px 16px;
+    border: 1.5px solid var(--ink);
+    border-radius: 999px;
+    white-space: nowrap;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .nav-cta:hover { background: var(--ink); color: var(--bg); }
+
+  main {
+    flex: 1 1 auto;
+    max-width: 680px;
+    width: 100%;
+    margin: 0 auto;
+    padding: clamp(32px, 8vh, 56px) clamp(20px, 5vw, 40px) clamp(56px, 10vh, 80px);
+  }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    color: var(--moss-dark);
+    font-weight: 500;
+    margin: 0 0 10px;
+  }
+  h1 {
+    font-size: clamp(1.7rem, 5vw, 2.3rem);
+    line-height: 1.12;
+    margin: 0 0 18px;
+    letter-spacing: -0.01em;
+  }
+  h2 {
+    font-size: clamp(1.2rem, 3vw, 1.4rem);
+    margin: 40px 0 14px;
+    letter-spacing: -0.005em;
+  }
+  h3 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    color: var(--moss-dark);
+    margin: 22px 0 8px;
+  }
+  p, li {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin: 0 0 16px;
+  }
+  p strong, li strong { color: var(--ink); font-weight: 600; }
+  ul, ol { margin: 0 0 20px; padding-left: 22px; }
+  li { margin-bottom: 8px; }
+
+  .callout {
+    background: #FFFFFF;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin: 24px 0;
+  }
+  .callout p:last-child { margin-bottom: 0; }
+
+  .example-boards {
+    display: flex;
+    gap: var(--gap, 5px);
+    margin: 6px 0 4px;
+  }
+  .tile {
+    width: 30px;
+    height: 30px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .tile.g { background: var(--moss); color: #F6F4EE; }
+  .tile.y { background: var(--mustard); color: #2B2410; }
+  .tile.x { background: var(--tile-off); color: var(--ink-soft); }
+  .tile-row-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--ink-soft);
+    margin: 2px 0 18px;
+  }
+
+  .key-list { list-style: none; padding: 0; margin: 18px 0 24px; }
+  .key-list li { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .key-swatch { width: 22px; height: 22px; border-radius: 4px; flex: 0 0 auto; }
+  .key-swatch.g { background: var(--moss); }
+  .key-swatch.y { background: var(--mustard); }
+  .key-swatch.x { background: var(--tile-off); }
+
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+    background: var(--ink);
+    color: var(--bg);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 12px 26px;
+    border-radius: 999px;
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+  .cta:hover { background: var(--moss-dark); transform: translateY(-1px); }
+
+  footer {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: clamp(10px, 2vh, 16px) clamp(16px, 4vw, 40px);
+    border-top: 1px solid var(--line);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(0.68rem, 1.4vw, 0.78rem);
+    color: var(--ink-soft);
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  footer a { text-decoration: underline; text-underline-offset: 2px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="index.html"><span class="dot"></span>GUESSOWORD</a>
+  <div class="nav-links">
+    <a class="nav-link active" href="how-to-play.html">How to Play</a>
+    <a class="nav-link" href="strategy.html">Strategy</a>
+    <a class="nav-link" href="faq.html">FAQ</a>
+    <a class="nav-link" href="about.html">About</a>
+    <a class="nav-cta" href="https://sixordle.guessoword.com">Play Sixordle</a>
+  </div>
+</nav>
+
+<main>
+  <p class="eyebrow">GUIDE</p>
+  <h1>How to play Sixordle</h1>
+
+  <p>Sixordle takes the word-guessing format you already know and stacks it six boards deep. Instead of solving one five-letter word, you're solving six of them at the same time, using the same set of guesses across all of them. It sounds harder than it is — the trick is learning to read six boards at once instead of one.</p>
+
+  <h2>The basic rules</h2>
+  <p>Each puzzle gives you six hidden five-letter words and a shared pool of guesses. Every time you enter a five-letter word, it's checked against <strong>all six</strong> answers simultaneously, and each board gives you its own feedback:</p>
+
+  <ul class="key-list">
+    <li><span class="key-swatch g"></span> <strong>Green</strong> — that letter is correct, and it's in the right spot for that board.</li>
+    <li><span class="key-swatch y"></span> <strong>Yellow</strong> — that letter appears in that board's word, but in a different position.</li>
+    <li><span class="key-swatch x"></span> <strong>Grey</strong> — that letter doesn't appear anywhere in that board's word.</li>
+  </ul>
+
+  <p>Because your guess is scored six separate times, one word can be a great guess for board 3 and a wasted one for board 5. Reading the pattern across all six rows at once, rather than solving them one at a time, is the entire skill of the game.</p>
+
+  <h2>A worked example</h2>
+  <p>Say your first guess is <strong>CRANE</strong>. Two of the six boards might come back looking like this:</p>
+
+  <div class="example-boards" aria-hidden="true">
+    <span class="tile x">C</span><span class="tile y">R</span><span class="tile x">A</span><span class="tile g">N</span><span class="tile x">E</span>
+  </div>
+  <p class="tile-row-label">Board 1 — R is in the word but not position 2; N is confirmed in position 4.</p>
+
+  <div class="example-boards" aria-hidden="true">
+    <span class="tile g">C</span><span class="tile x">R</span><span class="tile x">A</span><span class="tile x">N</span><span class="tile y">E</span>
+  </div>
+  <p class="tile-row-label">Board 2 — C is confirmed first; E is somewhere else in the word.</p>
+
+  <p>You now have five more clues bundled into that single guess. Your next word should try to satisfy as many boards as possible at once — for instance, testing where that stray R and E might land — rather than chasing just one board to a solved state while ignoring the rest.</p>
+
+  <h2>Guess limits and scoring</h2>
+  <p>You get a fixed number of shared guesses to close out all six boards — enough to make it fair, not enough to brute-force it. A board is solved the moment all five of its letters turn green; solved boards stay visible so you can track your progress, but you keep guessing until every board is solved or you run out of tries.</p>
+
+  <div class="callout">
+    <p><strong>New to word-guessing games generally?</strong> Every guess has to be a real five-letter word — the game will reject anything that isn't in the dictionary. Guesses are not case-sensitive, and there's no penalty for guessing a word that turns out to have no letters in common with any board; you'll just want to avoid repeating it.</p>
+  </div>
+
+  <h2>Tips for your first puzzle</h2>
+  <ol>
+    <li><strong>Start broad, not clever.</strong> Your opening guesses should maximize the number of different, common letters you test — vowels and frequent consonants like R, S, T, L, N — rather than trying to guess a specific word.</li>
+    <li><strong>Track letters per board, not globally.</strong> A letter that's grey on board 2 can still be green on board 5. Keep separate mental (or written) notes for each of the six words.</li>
+    <li><strong>Prioritize boards that are close to solved.</strong> Once a board has three or four green tiles, it usually takes less effort to finish than a board that's still wide open — clearing it frees up your attention for the harder ones.</li>
+    <li><strong>Don't waste guesses confirming what you already know.</strong> If a letter is already green in a position across every board where it could matter, spend that slot testing a new letter instead.</li>
+  </ol>
+
+  <p>Read on for a deeper look at starter words and letter strategy, or jump straight in and learn by playing — most people get the hang of it within a puzzle or two.</p>
+
+  <a class="cta" href="https://sixordle.guessoword.com">Play Sixordle →</a>
+
+</main>
+
+<footer>
+  <span>© 2026 Guessoword · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></span>
+  <span>Developed by Savir Singh</span>
+</footer>
+
+</body>
+</html>
