@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sixordle Strategy — Guessoword</title>
+<meta name="description" content="Starter words, letter frequency, and multi-board tactics for solving Sixordle faster.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F6F4EE; --ink: #262420; --ink-soft: #6B6558;
+    --moss: #4F6F52; --moss-dark: #3C5A3F; --mustard: #C99A3B;
+    --tile-off: #E4DFD2; --line: #DAD4C6;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink); font-family: 'Manrope', sans-serif; }
+  body { min-height: 100dvh; display: flex; flex-direction: column; }
+  a { color: inherit; }
+  nav {
+    flex: 0 0 auto; display: flex; align-items: center; justify-content: space-between;
+    padding: clamp(10px, 2vh, 18px) clamp(16px, 4vw, 40px);
+    border-bottom: 1px solid var(--line); flex-wrap: wrap; gap: 10px;
+  }
+  .logo {
+    font-family: 'JetBrains Mono', monospace; font-weight: 700;
+    font-size: clamp(0.95rem, 2vw, 1.15rem); letter-spacing: 0.02em;
+    display: flex; align-items: center; gap: 8px; text-decoration: none;
+  }
+  .logo .dot { width: 0.5em; height: 0.5em; background: var(--moss); border-radius: 2px; display: inline-block; }
+  .nav-links { display: flex; align-items: center; gap: clamp(12px, 2.2vw, 22px); flex-wrap: wrap; }
+  .nav-link { font-family: 'JetBrains Mono', monospace; font-size: clamp(0.72rem, 1.6vw, 0.85rem); color: var(--ink-soft); text-decoration: none; }
+  .nav-link.active, .nav-link:hover { color: var(--ink); }
+  .nav-cta {
+    font-family: 'JetBrains Mono', monospace; font-size: clamp(0.7rem, 1.6vw, 0.85rem); font-weight: 500;
+    text-decoration: none; padding: 8px 16px; border: 1.5px solid var(--ink); border-radius: 999px;
+    white-space: nowrap; transition: background 0.15s ease, color 0.15s ease;
+  }
+  .nav-cta:hover { background: var(--ink); color: var(--bg); }
+  main {
+    flex: 1 1 auto; max-width: 680px; width: 100%; margin: 0 auto;
+    padding: clamp(32px, 8vh, 56px) clamp(20px, 5vw, 40px) clamp(56px, 10vh, 80px);
+  }
+  .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; letter-spacing: 0.18em; color: var(--moss-dark); font-weight: 500; margin: 0 0 10px; }
+  h1 { font-size: clamp(1.7rem, 5vw, 2.3rem); line-height: 1.12; margin: 0 0 18px; letter-spacing: -0.01em; }
+  h2 { font-size: clamp(1.2rem, 3vw, 1.4rem); margin: 40px 0 14px; letter-spacing: -0.005em; }
+  h3 { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; letter-spacing: 0.02em; color: var(--moss-dark); margin: 22px 0 8px; }
+  p, li { font-size: 1rem; line-height: 1.7; color: var(--ink-soft); margin: 0 0 16px; }
+  p strong, li strong { color: var(--ink); font-weight: 600; }
+  ul, ol { margin: 0 0 20px; padding-left: 22px; }
+  li { margin-bottom: 8px; }
+  .callout { background: #FFFFFF; border: 1px solid var(--line); border-radius: 12px; padding: 18px 22px; margin: 24px 0; }
+  .callout p:last-child { margin-bottom: 0; }
+  table { width: 100%; border-collapse: collapse; margin: 8px 0 24px; font-size: 0.92rem; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); color: var(--ink-soft); }
+  th { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; letter-spacing: 0.04em; color: var(--ink); }
+  td strong { color: var(--ink); }
+  .word-chip {
+    display: inline-block; font-family: 'JetBrains Mono', monospace; font-weight: 700;
+    background: var(--tile-off); color: var(--ink); padding: 3px 9px; border-radius: 5px; font-size: 0.9rem;
+  }
+  .cta {
+    display: inline-flex; align-items: center; gap: 8px; margin-top: 8px;
+    background: var(--ink); color: var(--bg); text-decoration: none; font-weight: 600;
+    font-size: 0.95rem; padding: 12px 26px; border-radius: 999px;
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+  .cta:hover { background: var(--moss-dark); transform: translateY(-1px); }
+  footer {
+    flex: 0 0 auto; display: flex; align-items: center; justify-content: space-between;
+    padding: clamp(10px, 2vh, 16px) clamp(16px, 4vw, 40px); border-top: 1px solid var(--line);
+    font-family: 'JetBrains Mono', monospace; font-size: clamp(0.68rem, 1.4vw, 0.78rem); color: var(--ink-soft);
+    flex-wrap: wrap; gap: 6px;
+  }
+  footer a { text-decoration: underline; text-underline-offset: 2px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="index.html"><span class="dot"></span>GUESSOWORD</a>
+  <div class="nav-links">
+    <a class="nav-link" href="how-to-play.html">How to Play</a>
+    <a class="nav-link active" href="strategy.html">Strategy</a>
+    <a class="nav-link" href="faq.html">FAQ</a>
+    <a class="nav-link" href="about.html">About</a>
+    <a class="nav-cta" href="https://sixordle.guessoword.com">Play Sixordle</a>
+  </div>
+</nav>
+
+<main>
+  <p class="eyebrow">GUIDE</p>
+  <h1>Sixordle strategy</h1>
+
+  <p>Solving one word-guessing board is mostly about letter frequency. Solving six at once is about something different: managing your attention across six independent problems that share a single resource — your guesses. Here's how to think about both.</p>
+
+  <h2>Pick starter words for coverage, not luck</h2>
+  <p>Your first two or three guesses matter more in Sixordle than in a single-board game, because every guess is tested against six answers at once. A strong opener isn't the word you think is "the answer" — it's the word that tests the most common, most differentiated letters possible.</p>
+
+  <p>English text leans heavily on a small set of letters. Roughly here's how often each shows up in everyday five-letter words:</p>
+
+  <table>
+    <tr><th>Letter</th><th>Relative frequency</th></tr>
+    <tr><td><strong>E, A, R, O, T</strong></td><td>Most common — appear in a large share of five-letter words</td></tr>
+    <tr><td><strong>I, S, N, L, C</strong></td><td>Common — good second-tier picks</td></tr>
+    <tr><td><strong>U, D, P, M, H</strong></td><td>Moderate — useful once common letters are placed</td></tr>
+    <tr><td><strong>G, B, F, Y, W, K</strong></td><td>Less common — save for later guesses</td></tr>
+    <tr><td><strong>V, X, Z, J, Q</strong></td><td>Rare — rarely worth an early guess</td></tr>
+  </table>
+
+  <p>Two openers that cover a lot of ground between them: <span class="word-chip">CRANE</span> and <span class="word-chip">SOLID</span>. Together they test eight of the ten most frequent letters in the language without repeating any. Some players prefer <span class="word-chip">ADIEU</span> or <span class="word-chip">AUDIO</span> first, purely to fix all the common vowels in one move — useful in Sixordle specifically, because knowing which boards contain which vowels narrows six problems at once instead of one.</p>
+
+  <h2>Treat it as six small problems, not one big one</h2>
+  <p>The single biggest mistake new players make is reading the whole grid at once and getting overwhelmed. Instead:</p>
+  <ul>
+    <li><strong>Give each board its own scratch notes.</strong> Track confirmed letters, ruled-out letters, and known positions separately per board — a letter that's dead on board 4 might be the answer on board 6.</li>
+    <li><strong>Solve outward from your closest board.</strong> The moment a board has three or more greens, switch your attention to closing it rather than opening new information on a board you haven't touched yet. Fewer open boards means less to track.</li>
+    <li><strong>Use "wasted" guesses deliberately.</strong> A guess that doesn't help a solved board isn't wasted if it's actively testing an unsolved one. Before typing a guess, check whether it's earning information on every board that's still open — if a guess only serves one board, that's a sign you should hold off until fewer boards remain.</li>
+  </ul>
+
+  <h2>Reading yellow letters across boards</h2>
+  <p>Yellow tiles are the most valuable information in Sixordle because they tell you a letter exists without telling you where — and in a six-board puzzle, the same yellow letter can point to a different position on every board. Keep a running list of "known letters, unknown position" per board, and use later guesses to test different slots for that letter on the boards where it's still ambiguous, rather than retesting letters you've already resolved elsewhere.</p>
+
+  <h2>Late-game guesses</h2>
+  <p>With one or two boards left, switch from information-gathering to direct solving. At that point, guessing an actual candidate word for the remaining board is usually better than a "balanced" word that spreads new letters — you're no longer trying to learn about six words, you're trying to close out one or two.</p>
+
+  <div class="callout">
+    <p><strong>Rule of thumb:</strong> early guesses should maximize new information across every open board; late guesses should maximize the chance of directly solving the boards that remain.</p>
+  </div>
+
+  <p>None of this replaces just playing — pattern recognition across six boards develops fast once you've solved a few puzzles. These are starting points, not a fixed formula.</p>
+
+  <a class="cta" href="https://sixordle.guessoword.com">Play Sixordle →</a>
+
+</main>
+
+<footer>
+  <span>© 2026 Guessoword · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></span>
+  <span>Developed by Savir Singh</span>
+</footer>
+
+</body>
+</html>
