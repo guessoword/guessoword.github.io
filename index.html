@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Guessoword — small, sharp word games</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F6F4EE;
+    --ink: #262420;
+    --ink-soft: #6B6558;
+    --moss: #4F6F52;
+    --moss-dark: #3C5A3F;
+    --mustard: #C99A3B;
+    --tile-off: #E4DFD2;
+    --line: #DAD4C6;
+    --tile: clamp(14px, min(4vw, 4.2svh), 30px);
+    --gap: clamp(3px, 0.7vw, 6px);
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Manrope', sans-serif;
+  }
+
+  body {
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 8%, rgba(79,111,82,0.06), transparent 70%),
+      var(--bg);
+  }
+
+  a { color: inherit; }
+
+  /* NAV */
+  nav {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: clamp(10px, 2vh, 18px) clamp(16px, 4vw, 40px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .logo {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: clamp(0.95rem, 2vw, 1.15rem);
+    letter-spacing: 0.02em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .logo .dot {
+    width: 0.5em;
+    height: 0.5em;
+    background: var(--moss);
+    border-radius: 2px;
+    display: inline-block;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: clamp(14px, 2.4vw, 24px);
+  }
+
+  .nav-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(0.75rem, 1.6vw, 0.85rem);
+    color: var(--ink-soft);
+    text-decoration: none;
+  }
+
+  .nav-link:hover { color: var(--ink); }
+
+  .nav-cta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(0.7rem, 1.6vw, 0.85rem);
+    font-weight: 500;
+    text-decoration: none;
+    padding: 8px 16px;
+    border: 1.5px solid var(--ink);
+    border-radius: 999px;
+    transition: background 0.15s ease, color 0.15s ease;
+    white-space: nowrap;
+  }
+
+  .nav-cta:hover {
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  /* MAIN */
+  main {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: clamp(6px, 1.5vh, 20px) clamp(16px, 5vw, 40px);
+    gap: clamp(6px, 1.4vh, 14px);
+    min-height: 0;
+  }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(0.65rem, 1.4vw, 0.78rem);
+    letter-spacing: 0.18em;
+    color: var(--moss-dark);
+    font-weight: 500;
+    margin: 0;
+  }
+
+  h1 {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.5rem, 4.4vw, 2.6rem);
+    line-height: 1.08;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  .lede {
+    max-width: 46ch;
+    font-size: clamp(0.82rem, 1.7vw, 1rem);
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  /* BOARDS — six mini Sixordle rows */
+  .boards {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: clamp(8px, 1.6vw, 16px) clamp(14px, 2.6vw, 26px);
+    margin: clamp(2px, 0.6vh, 8px) 0;
+  }
+
+  .board {
+    display: flex;
+    gap: var(--gap);
+  }
+
+  .tile {
+    width: var(--tile);
+    height: var(--tile);
+    border-radius: 3px;
+    background: var(--tile-off);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: calc(var(--tile) * 0.46);
+    color: var(--ink);
+    transform: rotateX(90deg);
+    animation: flip 0.45s ease forwards;
+    animation-delay: calc(var(--i) * 0.06s + 0.15s);
+  }
+
+  .tile.g { --final: var(--moss); color: #F6F4EE; }
+  .tile.y { --final: var(--mustard); color: #2B2410; }
+  .tile.x { --final: var(--line); color: var(--ink-soft); }
+
+  @keyframes flip {
+    0%   { transform: rotateX(90deg); background: var(--tile-off); }
+    50%  { transform: rotateX(90deg); }
+    51%  { background: var(--final); }
+    100% { transform: rotateX(0deg); background: var(--final); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tile { animation: none; transform: none; background: var(--final); }
+  }
+
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: clamp(4px, 1vh, 10px);
+    background: var(--ink);
+    color: var(--bg);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: clamp(0.85rem, 1.9vw, 1rem);
+    padding: clamp(9px, 1.6vh, 13px) clamp(20px, 3vw, 28px);
+    border-radius: 999px;
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+
+  .cta:hover { background: var(--moss-dark); transform: translateY(-1px); }
+
+  .cta-url {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(0.68rem, 1.3vw, 0.78rem);
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  /* FOOTER */
+  footer {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: clamp(8px, 1.6vh, 14px) clamp(16px, 4vw, 40px);
+    border-top: 1px solid var(--line);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(0.65rem, 1.3vw, 0.75rem);
+    color: var(--ink-soft);
+  }
+
+  footer a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  @media (max-width: 480px) {
+    .boards { grid-template-columns: repeat(2, auto); }
+    .lede { max-width: 34ch; }
+    footer span.sep { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="index.html" style="text-decoration:none; color: var(--ink);"><span class="dot"></span>GUESSOWORD</a>
+  <div class="nav-links">
+    <a class="nav-link" href="about.html">About</a>
+    <a class="nav-cta" href="https://sixordle.guessoword.com">Play Sixordle</a>
+  </div>
+</nav>
+
+<main>
+  <p class="eyebrow">WORD GAMES</p>
+  <h1>Small puzzles.<br>Sharp thinking.</h1>
+  <p class="lede">Guessoword makes tight, well-tuned word games built for a coffee break — no accounts, no clutter, just today's puzzle.</p>
+
+  <div class="boards" aria-hidden="true">
+    <div class="board">
+      <span class="tile g" style="--i:0">G</span>
+      <span class="tile x" style="--i:1">U</span>
+      <span class="tile y" style="--i:2">E</span>
+      <span class="tile x" style="--i:3">S</span>
+      <span class="tile g" style="--i:4">S</span>
+    </div>
+    <div class="board">
+      <span class="tile y" style="--i:1">W</span>
+      <span class="tile g" style="--i:2">O</span>
+      <span class="tile x" style="--i:3">R</span>
+      <span class="tile g" style="--i:4">D</span>
+      <span class="tile x" style="--i:5">S</span>
+    </div>
+    <div class="board">
+      <span class="tile x" style="--i:2">T</span>
+      <span class="tile g" style="--i:3">H</span>
+      <span class="tile y" style="--i:4">I</span>
+      <span class="tile x" style="--i:5">N</span>
+      <span class="tile g" style="--i:6">K</span>
+    </div>
+    <div class="board">
+      <span class="tile g" style="--i:1">B</span>
+      <span class="tile y" style="--i:2">R</span>
+      <span class="tile x" style="--i:3">A</span>
+      <span class="tile g" style="--i:4">I</span>
+      <span class="tile x" style="--i:5">N</span>
+    </div>
+    <div class="board">
+      <span class="tile x" style="--i:2">S</span>
+      <span class="tile g" style="--i:3">O</span>
+      <span class="tile g" style="--i:4">L</span>
+      <span class="tile y" style="--i:5">V</span>
+      <span class="tile x" style="--i:6">E</span>
+    </div>
+    <div class="board">
+      <span class="tile g" style="--i:3">S</span>
+      <span class="tile x" style="--i:4">I</span>
+      <span class="tile g" style="--i:5">X</span>
+      <span class="tile y" style="--i:6">T</span>
+      <span class="tile x" style="--i:7">H</span>
+    </div>
+  </div>
+
+  <a class="cta" href="https://sixordle.guessoword.com">Play Sixordle →</a>
+  <p class="cta-url">sixordle.guessoword.com</p>
+</main>
+
+<footer>
+  <span>© 2026 Guessoword · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></span>
+  <span>Developed by Savir Singh</span>
+</footer>
+
+</body>
+</html>

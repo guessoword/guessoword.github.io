@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terms of Service — Guessoword</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F6F4EE; --ink: #262420; --ink-soft: #6B6558;
+    --moss: #4F6F52; --moss-dark: #3C5A3F; --line: #DAD4C6;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink); font-family: 'Manrope', sans-serif; }
+  body { min-height: 100dvh; display: flex; flex-direction: column; }
+  a { color: var(--moss-dark); }
+
+  nav {
+    flex: 0 0 auto; display: flex; align-items: center; justify-content: space-between;
+    padding: clamp(10px, 2vh, 18px) clamp(16px, 4vw, 40px);
+    border-bottom: 1px solid var(--line);
+  }
+  .logo {
+    font-family: 'JetBrains Mono', monospace; font-weight: 700;
+    font-size: clamp(0.95rem, 2vw, 1.15rem); letter-spacing: 0.02em;
+    display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--ink);
+  }
+  .logo .dot { width: 0.5em; height: 0.5em; background: var(--moss); border-radius: 2px; display: inline-block; }
+  .nav-links { display: flex; align-items: center; gap: clamp(14px, 2.4vw, 24px); }
+  .nav-link {
+    font-family: 'JetBrains Mono', monospace; font-size: clamp(0.75rem, 1.6vw, 0.85rem);
+    color: var(--ink-soft); text-decoration: none;
+  }
+  .nav-link:hover { color: var(--ink); }
+  .nav-cta {
+    font-family: 'JetBrains Mono', monospace; font-size: clamp(0.7rem, 1.6vw, 0.85rem); font-weight: 500;
+    text-decoration: none; padding: 8px 16px; border: 1.5px solid var(--ink); border-radius: 999px;
+    white-space: nowrap; transition: background 0.15s ease, color 0.15s ease; color: var(--ink);
+  }
+  .nav-cta:hover { background: var(--ink); color: var(--bg); }
+
+  main { flex: 1 1 auto; max-width: 680px; width: 100%; margin: 0 auto; padding: clamp(28px, 6vh, 56px) clamp(20px, 5vw, 40px); }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; letter-spacing: 0.16em;
+    color: var(--moss-dark); font-weight: 500; margin: 0 0 8px;
+  }
+  h1 { font-size: clamp(1.6rem, 4vw, 2.1rem); line-height: 1.1; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .updated { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--ink-soft); margin: 0 0 32px; }
+
+  h2 {
+    font-size: 1.05rem; margin: 32px 0 10px; letter-spacing: -0.005em;
+    padding-top: 20px; border-top: 1px solid var(--line);
+  }
+  h2:first-of-type { border-top: none; padding-top: 0; }
+  p, li { font-size: 0.95rem; line-height: 1.65; color: var(--ink-soft); margin: 0 0 12px; }
+  ul { padding-left: 20px; margin: 0 0 12px; }
+  strong { color: var(--ink); font-weight: 600; }
+
+  footer {
+    flex: 0 0 auto; display: flex; align-items: center; justify-content: space-between;
+    padding: clamp(10px, 2vh, 16px) clamp(16px, 4vw, 40px); border-top: 1px solid var(--line);
+    font-family: 'JetBrains Mono', monospace; font-size: clamp(0.68rem, 1.4vw, 0.78rem); color: var(--ink-soft);
+  }
+  footer a { text-decoration: underline; text-underline-offset: 2px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="index.html"><span class="dot"></span>GUESSOWORD</a>
+  <div class="nav-links">
+    <a class="nav-link" href="about.html">About</a>
+    <a class="nav-cta" href="https://sixordle.guessoword.com">Play Sixordle</a>
+  </div>
+</nav>
+
+<main>
+  <p class="eyebrow">LEGAL</p>
+  <h1>Terms of Service</h1>
+  <p class="updated">Last updated: July 2026</p>
+
+  <h2>1. Acceptance of Terms</h2>
+  <p>By accessing or playing Sixordle or any other Guessoword game, you agree to these Terms of Service. If you don't agree, please don't use our games.</p>
+
+  <h2>2. Description of Service</h2>
+  <p>Guessoword provides free-to-play word games, including Sixordle, accessible through guessoword.com and its subdomains. We may update, change, or discontinue any part of our games at any time.</p>
+
+  <h2>3. Acceptable Use</h2>
+  <p>You agree not to:</p>
+  <ul>
+    <li>Use automated tools (bots, scrapers) to interact with our games in ways not intended for normal play.</li>
+    <li>Attempt to disrupt, overload, or gain unauthorized access to our systems.</li>
+    <li>Copy, redistribute, or reverse-engineer our games or their underlying code without permission.</li>
+  </ul>
+
+  <h2>4. Intellectual Property</h2>
+  <p>All game designs, branding, artwork, and code on guessoword.com are owned by Guessoword unless otherwise noted. You may not reproduce or repurpose them without our written permission.</p>
+
+  <h2>5. Advertising</h2>
+  <p>Our games may display third-party advertising, including through Google AdSense, to support free access. Ads are served by third parties in accordance with their own policies.</p>
+
+  <h2>6. Disclaimer of Warranties</h2>
+  <p>Our games are provided "as is," without warranties of any kind. We don't guarantee uninterrupted access, error-free operation, or that the games will always be available.</p>
+
+  <h2>7. Limitation of Liability</h2>
+  <p>To the fullest extent permitted by law, Guessoword isn't liable for any indirect, incidental, or consequential damages arising from your use of our games.</p>
+
+  <h2>8. Changes to These Terms</h2>
+  <p>We may revise these terms from time to time. Continued use of our games after changes take effect means you accept the updated terms.</p>
+
+  <h2>9. Governing Law</h2>
+  <p>These terms are governed by the laws of the Province of Ontario, Canada, without regard to conflict of law principles.</p>
+
+  <h2>10. Contact Us</h2>
+  <p>Questions about these terms can be sent to the contact information listed on our About page.</p>
+</main>
+
+<footer>
+  <span>© 2026 Guessoword · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></span>
+  <span>Developed by Savir Singh</span>
+</footer>
+
+</body>
+</html>

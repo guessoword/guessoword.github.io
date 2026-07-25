@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About — Guessoword</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F6F4EE;
+    --ink: #262420;
+    --ink-soft: #6B6558;
+    --moss: #4F6F52;
+    --moss-dark: #3C5A3F;
+    --mustard: #C99A3B;
+    --tile-off: #E4DFD2;
+    --line: #DAD4C6;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink); font-family: 'Manrope', sans-serif; }
+  body { min-height: 100dvh; display: flex; flex-direction: column; }
+  a { color: inherit; }
+
+  nav {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: clamp(10px, 2vh, 18px) clamp(16px, 4vw, 40px);
+    border-bottom: 1px solid var(--line);
+  }
+  .logo {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: clamp(0.95rem, 2vw, 1.15rem);
+    letter-spacing: 0.02em;
+    display: flex; align-items: center; gap: 8px;
+    text-decoration: none;
+  }
+  .logo .dot { width: 0.5em; height: 0.5em; background: var(--moss); border-radius: 2px; display: inline-block; }
+  .nav-links { display: flex; align-items: center; gap: clamp(14px, 2.4vw, 24px); }
+  .nav-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(0.75rem, 1.6vw, 0.85rem);
+    color: var(--ink-soft);
+    text-decoration: none;
+  }
+  .nav-link:hover { color: var(--ink); }
+  .nav-cta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(0.7rem, 1.6vw, 0.85rem);
+    font-weight: 500;
+    text-decoration: none;
+    padding: 8px 16px;
+    border: 1.5px solid var(--ink);
+    border-radius: 999px;
+    white-space: nowrap;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .nav-cta:hover { background: var(--ink); color: var(--bg); }
+
+  main {
+    flex: 1 1 auto;
+    max-width: 640px;
+    width: 100%;
+    margin: 0 auto;
+    padding: clamp(32px, 8vh, 64px) clamp(20px, 5vw, 40px);
+  }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    color: var(--moss-dark);
+    font-weight: 500;
+    margin: 0 0 10px;
+  }
+  h1 {
+    font-size: clamp(1.8rem, 5vw, 2.4rem);
+    line-height: 1.1;
+    margin: 0 0 20px;
+    letter-spacing: -0.01em;
+  }
+  p {
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin: 0 0 18px;
+  }
+  p strong { color: var(--ink); font-weight: 600; }
+
+  .stats {
+    display: flex;
+    gap: clamp(20px, 4vw, 40px);
+    margin: 32px 0;
+    padding: 24px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .stat-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: clamp(1.4rem, 4vw, 1.9rem);
+    color: var(--moss-dark);
+    display: block;
+  }
+  .stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    color: var(--ink-soft);
+  }
+
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+    background: var(--ink);
+    color: var(--bg);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 12px 26px;
+    border-radius: 999px;
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+  .cta:hover { background: var(--moss-dark); transform: translateY(-1px); }
+
+  footer {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: clamp(10px, 2vh, 16px) clamp(16px, 4vw, 40px);
+    border-top: 1px solid var(--line);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(0.68rem, 1.4vw, 0.78rem);
+    color: var(--ink-soft);
+  }
+  footer a { text-decoration: underline; text-underline-offset: 2px; }
+
+  @media (max-width: 480px) {
+    .stats { gap: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="index.html"><span class="dot"></span>GUESSOWORD</a>
+  <div class="nav-links">
+    <a class="nav-link" href="about.html">About</a>
+    <a class="nav-cta" href="https://sixordle.guessoword.com">Play Sixordle</a>
+  </div>
+</nav>
+
+<main>
+  <p class="eyebrow">OUR STORY</p>
+  <h1>Small studio. One puzzle at a time.</h1>
+
+  <p>Guessoword started in <strong>February 2022</strong> as a simple idea: word games shouldn't take five minutes to load or ask for an account before you've had any fun. The following month we launched <strong>Sixordle</strong> — a game that asks you to solve six five-letter words at once, using the same rules you already know, just six boards deep.</p>
+
+  <div class="stats">
+    <div>
+      <span class="stat-num">100,000+</span>
+      <span class="stat-label">PLAYERS SINCE LAUNCH</span>
+    </div>
+    <div>
+      <span class="stat-num">2022</span>
+      <span class="stat-label">FOUNDED</span>
+    </div>
+  </div>
+
+  <p>Thousands of people still come back to solve Sixordle every day. We're a small, independent word-games studio — no investors, no growth hacks, just puzzles built to be worth the few minutes they take.</p>
+
+  <a class="cta" href="https://sixordle.guessoword.com">Play Sixordle</a>
+  <a class="cta" href="https://sixordle.guessoword.com">Donate*</a>
+  
+  <br><br><p>*Currently we lose hundreds of dollars a year, but have always kept Sixordle free. You can donate as little as $5. If the game has been a part of your life for a while and is valuable in your eyes, buy us a coffee! Add your name in the donation note and we'll create a credits page sometime.</p>
+  
+  <p>Email: contact@guessoword.com</p>
+</main>
+
+<footer>
+  <span>© 2026 Guessoword · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></span>
+  <span>Developed by Savir Singh</span>
+</footer>
+
+</body>
+</html>
