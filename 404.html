@@ -1,65 +1,199 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Guessoword - 404</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-<link rel="icon" href="favicon.png">
-<script>
-        if (location.protocol === 'http:') {
-    window.location.replace("https://www.guessoword.com/404");
-}
-    </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>404 — Guessoword</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-div {
-  border: 1px solid gray;
-  padding: 8px;
-}
+  :root{
+    --bg: #F6F4EE;
+    --ink: #262420;
+    --ink-soft: #6B6558;
+    --moss: #4F6F52;
+    --moss-dark: #3C5A3F;
+    --mustard: #C99A3B;
+    --tile-off: #E4DFD2;
+    --line: #DAD4C6;
+    --tile: clamp(20px, min(6vw, 6svh), 40px);
+    --gap: clamp(4px, 0.9vw, 8px);
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; overflow: hidden; background: var(--bg); color: var(--ink); font-family: 'Manrope', sans-serif; }
+  body {
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    background: radial-gradient(ellipse 60% 50% at 50% 8%, rgba(79,111,82,0.06), transparent 70%), var(--bg);
+  }
+  a { color: inherit; }
 
-h1 {
-  text-align: center;
-  text-transform: uppercase;
-  color: orange;
-  font-family: "Roboto", serif;
-}
+  nav {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: clamp(10px, 2vh, 18px) clamp(16px, 4vw, 40px);
+    border-bottom: 1px solid var(--line);
+  }
+  .logo {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: clamp(0.95rem, 2vw, 1.15rem);
+    letter-spacing: 0.02em;
+    display: flex; align-items: center; gap: 8px;
+    text-decoration: none; color: var(--ink);
+  }
+  .logo .dot { width: 0.5em; height: 0.5em; background: var(--moss); border-radius: 2px; display: inline-block; }
+  .nav-links { display: flex; align-items: center; gap: clamp(14px, 2.4vw, 24px); }
+  .nav-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(0.75rem, 1.6vw, 0.85rem);
+    color: var(--ink-soft);
+    text-decoration: none;
+  }
+  .nav-link:hover { color: var(--ink); }
+  .nav-cta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(0.7rem, 1.6vw, 0.85rem);
+    font-weight: 500;
+    text-decoration: none;
+    padding: 8px 16px;
+    border: 1.5px solid var(--ink);
+    border-radius: 999px;
+    white-space: nowrap;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .nav-cta:hover { background: var(--ink); color: var(--bg); }
 
-h3 {
-  text-align: center;
-  text-transform: uppercase;
-  color: green;
-  font-family: "Roboto", serif;
-}
+  main {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: clamp(6px, 1.5vh, 20px) clamp(16px, 5vw, 40px);
+    gap: clamp(8px, 1.6vh, 16px);
+    min-height: 0;
+  }
 
-p {
-  text-indent: 0px;
-  text-align: justify;
-  letter-spacing: 2px;
-  color: gray;
-  font-family: "Roboto", serif;
-}
+  .board {
+    display: flex;
+    gap: var(--gap);
+  }
+  .tile {
+    width: var(--tile);
+    height: var(--tile);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: calc(var(--tile) * 0.46);
+    transform: rotateX(90deg);
+    animation: flip 0.45s ease forwards;
+    animation-delay: calc(var(--i) * 0.08s + 0.15s);
+  }
+  .tile.x { --final: var(--tile-off); background: var(--tile-off); color: var(--ink-soft); }
+  .tile.y { --final: var(--mustard); color: #2B2410; }
 
-ul {
-  text-indent: 0px;
-  text-align: justify;
-  letter-spacing: 2px;
-  color: gray;
-  font-family: "Roboto", serif;
-}
+  @keyframes flip {
+    0%   { transform: rotateX(90deg); background: var(--tile-off); }
+    50%  { transform: rotateX(90deg); }
+    51%  { background: var(--final); }
+    100% { transform: rotateX(0deg); background: var(--final); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tile { animation: none; transform: none; background: var(--final); }
+  }
 
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(0.65rem, 1.4vw, 0.78rem);
+    letter-spacing: 0.18em;
+    color: var(--moss-dark);
+    font-weight: 500;
+    margin: 0;
+  }
+  h1 {
+    font-size: clamp(1.3rem, 3.6vw, 1.9rem);
+    line-height: 1.2;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  .lede {
+    max-width: 42ch;
+    font-size: clamp(0.82rem, 1.7vw, 1rem);
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin: 0;
+  }
 
-a {
-  text-decoration: underline;
-  color: gray;
-}
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: clamp(4px, 1vh, 8px);
+    background: var(--ink);
+    color: var(--bg);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: clamp(0.85rem, 1.9vw, 1rem);
+    padding: clamp(9px, 1.6vh, 13px) clamp(20px, 3vw, 28px);
+    border-radius: 999px;
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+  .cta:hover { background: var(--moss-dark); transform: translateY(-1px); }
+
+  footer {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: clamp(8px, 1.6vh, 14px) clamp(16px, 4vw, 40px);
+    border-top: 1px solid var(--line);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(0.65rem, 1.3vw, 0.75rem);
+    color: var(--ink-soft);
+  }
+  footer a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
 </style>
 </head>
 <body>
 
-<center><div>
-  <h1 style="font-size: 44px">404 - <span style="color: gray; font-size: 24px">That's looking a bit grey</span></h1>
-  <h3>Page Not Found</h3>
-  <h3><a href="https://www.guessoword.com">Back to Guessoword</a></h3>
+<nav>
+  <a class="logo" href="index.html"><span class="dot"></span>GUESSOWORD</a>
+  <div class="nav-links">
+    <a class="nav-link" href="about.html">About</a>
+    <a class="nav-cta" href="https://sixordle.guessoword.com">Play Sixordle</a>
+  </div>
+</nav>
+
+<main>
+  <div class="board" aria-hidden="true">
+    <span class="tile x" style="--i:0">N</span>
+    <span class="tile x" style="--i:1">O</span>
+    <span class="tile y" style="--i:2">P</span>
+    <span class="tile x" style="--i:3">A</span>
+    <span class="tile x" style="--i:4">G</span>
+    <span class="tile y" style="--i:5">E</span>
+  </div>
+
+  <p class="eyebrow">404</p>
+  <h1>That one's not in the word list.</h1>
+  <p class="lede">The page you're looking for doesn't exist — but there's always another puzzle waiting.</p>
+
+  <a class="cta" href="index.html">Back home →</a>
+</main>
+
+<footer>
+  <span>© 2026 Guessoword · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></span>
+  <span>Developed by Savir Singh</span>
+</footer>
+
 </body>
 </html>
-
-
