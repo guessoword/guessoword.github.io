@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FAQ — Guessoword</title>
+<meta name="description" content="Answers to common questions about Sixordle: how it works, how often it updates, and how it's different from other word games.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F6F4EE; --ink: #262420; --ink-soft: #6B6558;
+    --moss: #4F6F52; --moss-dark: #3C5A3F; --mustard: #C99A3B;
+    --tile-off: #E4DFD2; --line: #DAD4C6;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink); font-family: 'Manrope', sans-serif; }
+  body { min-height: 100dvh; display: flex; flex-direction: column; }
+  a { color: inherit; }
+  nav {
+    flex: 0 0 auto; display: flex; align-items: center; justify-content: space-between;
+    padding: clamp(10px, 2vh, 18px) clamp(16px, 4vw, 40px);
+    border-bottom: 1px solid var(--line); flex-wrap: wrap; gap: 10px;
+  }
+  .logo {
+    font-family: 'JetBrains Mono', monospace; font-weight: 700;
+    font-size: clamp(0.95rem, 2vw, 1.15rem); letter-spacing: 0.02em;
+    display: flex; align-items: center; gap: 8px; text-decoration: none;
+  }
+  .logo .dot { width: 0.5em; height: 0.5em; background: var(--moss); border-radius: 2px; display: inline-block; }
+  .nav-links { display: flex; align-items: center; gap: clamp(12px, 2.2vw, 22px); flex-wrap: wrap; }
+  .nav-link { font-family: 'JetBrains Mono', monospace; font-size: clamp(0.72rem, 1.6vw, 0.85rem); color: var(--ink-soft); text-decoration: none; }
+  .nav-link.active, .nav-link:hover { color: var(--ink); }
+  .nav-cta {
+    font-family: 'JetBrains Mono', monospace; font-size: clamp(0.7rem, 1.6vw, 0.85rem); font-weight: 500;
+    text-decoration: none; padding: 8px 16px; border: 1.5px solid var(--ink); border-radius: 999px;
+    white-space: nowrap; transition: background 0.15s ease, color 0.15s ease;
+  }
+  .nav-cta:hover { background: var(--ink); color: var(--bg); }
+  main {
+    flex: 1 1 auto; max-width: 680px; width: 100%; margin: 0 auto;
+    padding: clamp(32px, 8vh, 56px) clamp(20px, 5vw, 40px) clamp(56px, 10vh, 80px);
+  }
+  .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; letter-spacing: 0.18em; color: var(--moss-dark); font-weight: 500; margin: 0 0 10px; }
+  h1 { font-size: clamp(1.7rem, 5vw, 2.3rem); line-height: 1.12; margin: 0 0 30px; letter-spacing: -0.01em; }
+  p, li { font-size: 1rem; line-height: 1.7; color: var(--ink-soft); margin: 0 0 0; }
+  p strong { color: var(--ink); font-weight: 600; }
+
+  .faq-item { border-bottom: 1px solid var(--line); padding: 22px 0; }
+  .faq-item:first-of-type { border-top: 1px solid var(--line); }
+  .faq-q {
+    font-weight: 700; color: var(--ink); font-size: 1.02rem; margin: 0 0 10px;
+    display: flex; gap: 10px;
+  }
+  .faq-q .qmark {
+    font-family: 'JetBrains Mono', monospace; color: var(--moss-dark); flex: 0 0 auto;
+  }
+  .faq-a { margin: 0; padding-left: 24px; }
+
+  .cta {
+    display: inline-flex; align-items: center; gap: 8px; margin-top: 28px;
+    background: var(--ink); color: var(--bg); text-decoration: none; font-weight: 600;
+    font-size: 0.95rem; padding: 12px 26px; border-radius: 999px;
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+  .cta:hover { background: var(--moss-dark); transform: translateY(-1px); }
+  footer {
+    flex: 0 0 auto; display: flex; align-items: center; justify-content: space-between;
+    padding: clamp(10px, 2vh, 16px) clamp(16px, 4vw, 40px); border-top: 1px solid var(--line);
+    font-family: 'JetBrains Mono', monospace; font-size: clamp(0.68rem, 1.4vw, 0.78rem); color: var(--ink-soft);
+    flex-wrap: wrap; gap: 6px;
+  }
+  footer a { text-decoration: underline; text-underline-offset: 2px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="index.html"><span class="dot"></span>GUESSOWORD</a>
+  <div class="nav-links">
+    <a class="nav-link" href="how-to-play.html">How to Play</a>
+    <a class="nav-link" href="strategy.html">Strategy</a>
+    <a class="nav-link active" href="faq.html">FAQ</a>
+    <a class="nav-link" href="about.html">About</a>
+    <a class="nav-cta" href="https://sixordle.guessoword.com">Play Sixordle</a>
+  </div>
+</nav>
+
+<main>
+  <p class="eyebrow">QUESTIONS</p>
+  <h1>Frequently asked questions</h1>
+
+  <div class="faq-item">
+    <p class="faq-q"><span class="qmark">Q.</span> Is Sixordle free to play?</p>
+    <p class="faq-a">Yes. Sixordle has always been free, with no account required and no paywalled puzzles. The site is supported entirely by small reader donations rather than a subscription.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q"><span class="qmark">Q.</span> How is Sixordle different from other word-guessing games?</p>
+    <p class="faq-a">Most games in this genre give you one hidden word per day. Sixordle gives you six hidden words at once, all checked against the same pool of guesses. The core rules — green for right letter and position, yellow for right letter and wrong position — stay the same; what changes is that you're managing six boards' worth of information simultaneously instead of one.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q"><span class="qmark">Q.</span> Do I need an account to play?</p>
+    <p class="faq-a">No. Guessoword games are built to be accessible from a link with no sign-up. Progress on the current puzzle is kept in your browser session.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q"><span class="qmark">Q.</span> How often does a new Sixordle puzzle come out?</p>
+    <p class="faq-a">There's a new puzzle daily. Each one uses a fresh set of six five-letter words, so solutions and starter-word effectiveness can vary day to day.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q"><span class="qmark">Q.</span> Why does my guess sometimes get rejected?</p>
+    <p class="faq-a">Every guess has to be a valid five-letter word in the game's dictionary. If a guess is rejected, it's usually because it isn't recognized as a standard English word — proper nouns, abbreviations, and most plurals formed just by adding "s" to a non-dictionary root won't be accepted.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q"><span class="qmark">Q.</span> Is there a limit to how many guesses I get?</p>
+    <p class="faq-a">Yes — the puzzle gives you a fixed, shared number of guesses to solve all six boards, deliberately tight enough that random guessing won't get you through it, but generous enough to reward careful play. See the <a href="how-to-play.html">How to Play</a> guide for the full mechanics.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q"><span class="qmark">Q.</span> Can I play on mobile?</p>
+    <p class="faq-a">Yes. Sixordle is built to work in any modern mobile browser without installing an app — no App Store or Play Store listing is needed.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q"><span class="qmark">Q.</span> Does Guessoword collect my personal data?</p>
+    <p class="faq-a">Guessoword doesn't require any personal information to play. Full detail on what's collected and why is in the <a href="privacy.html">Privacy Policy</a>.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q"><span class="qmark">Q.</span> Who makes Guessoword?</p>
+    <p class="faq-a">Guessoword is an independent, small studio project that started in February 2022, without outside investors. You can read more on the <a href="about.html">About</a> page.</p>
+  </div>
+
+  <div class="faq-item">
+    <p class="faq-q"><span class="qmark">Q.</span> I found a bug or have feedback — who do I contact?</p>
+    <p class="faq-a">Reach out any time at contact@guessoword.com. Small independent projects like this one rely on players flagging issues directly.</p>
+  </div>
+
+  <a class="cta" href="https://sixordle.guessoword.com">Play Sixordle →</a>
+
+</main>
+
+<footer>
+  <span>© 2026 Guessoword · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></span>
+  <span>Developed by Savir Singh</span>
+</footer>
+
+</body>
+</html>
