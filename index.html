@@ -277,6 +277,46 @@
     margin: 0;
   }
 
+  /* GIVING BACK CALLOUT */
+  .give-back {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    background: #EDE9DF;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 22px 24px;
+    margin-top: 8px;
+  }
+  .give-back .badge {
+    flex: 0 0 auto;
+    width: 46px;
+    height: 46px;
+    border-radius: 10px;
+    background: var(--moss);
+    color: #F6F4EE;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+  .give-back p { margin: 0; }
+  .give-back p.title {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--ink);
+    letter-spacing: 0.02em;
+    margin-bottom: 6px;
+  }
+  .give-back p.desc {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
   /* FOOTER */
   footer {
     flex: 0 0 auto;
@@ -302,6 +342,7 @@
     .boards { grid-template-columns: repeat(2, auto); }
     .lede { max-width: 34ch; }
     footer span.sep { display: none; }
+    .give-back { flex-direction: column; }
   }
 </style>
 </head>
@@ -395,6 +436,17 @@
         <p class="card-title">FAQ</p>
         <p class="card-desc">Answers on guess limits, puzzle timing, accounts, and more.</p>
       </a>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Giving back</h2>
+    <div class="give-back">
+      <div class="badge">1%</div>
+      <div>
+        <p class="title">SUPPORTED BY SIXORDLE PREMIUM</p>
+        <p class="desc">A share of Sixordle Premium subscription revenue goes toward carbon-reduction projects through Stripe Climate — a commitment we're backing for all of 2026, and hope to keep growing from there. It's a small step, but it's part of how we want to build Guessoword: sustainably, and without leaning on ad revenue to do it. <a href="payments.html">Full details in our Payment Policy.</a></p>
+      </div>
     </div>
   </section>
 
