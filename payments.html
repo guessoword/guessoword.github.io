@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Subscription &amp; Payment Policy — Guessoword</title>
+<meta name="description" content="Prices, automatic renewal, cancellation, refunds, guest access and billing terms for Sixordle and Octordle ad-free subscriptions.">
+<link rel="canonical" href="https://www.guessoword.com/payments.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -78,6 +80,27 @@
     font-family: 'JetBrains Mono', monospace; font-size: clamp(0.68rem, 1.4vw, 0.78rem); color: var(--ink-soft);
   }
   footer a { text-decoration: underline; text-underline-offset: 2px; }
+
+  html { scroll-behavior: smooth; }
+  a { overflow-wrap: anywhere; }
+  section { scroll-margin-top: 20px; }
+  .summary h2 { border: 0; padding-top: 0; margin-top: 0; }
+  nav.policy-index { display: block; padding: 0 0 24px; margin: 0 0 28px; border-bottom: 1px solid var(--line); }
+  .policy-index h2 { border: 0; padding: 0; margin: 0 0 12px; }
+  .policy-index ol { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 28px; padding-left: 22px; }
+  .policy-index li { font-size: .84rem; margin: 0; }
+  table { border-collapse: collapse; width: 100%; margin: 0 0 16px; font-size: .9rem; }
+  caption { text-align: left; color: var(--ink-soft); font-size: .84rem; margin-bottom: 10px; }
+  th, td { border: 1px solid var(--line); padding: 10px; text-align: left; vertical-align: top; }
+  thead th { background: #EDE9DF; }
+  .steps { padding-left: 22px; }
+  @media (max-width: 560px) {
+    .policy-index ol { grid-template-columns: 1fr; }
+    footer { flex-wrap: wrap; gap: 10px; }
+    th, td { padding: 8px; font-size: .82rem; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  @media print { body { background: white; } body > nav, footer, .policy-index { display: none; } main { max-width: none; padding: 0; } a { color: inherit; } h2, h3 { break-after: avoid; } table, .summary { break-inside: avoid; } }
 </style>
 </head>
 <body>
@@ -90,78 +113,207 @@
   </div>
 </nav>
 
-<main>
-  <p class="eyebrow">LEGAL</p>
+<main id="main-content">
+  <p class="eyebrow">LEGAL · BILLING &amp; SUBSCRIPTIONS</p>
   <h1>Subscription &amp; Payment Policy</h1>
-  <p class="updated">Last updated: July 2026 · Applies to Sixordle Premium and any other paid feature on Guessoword sites</p>
+  <p class="updated">Effective and last updated: November 15, 2026 · Applies to Guessoword paid features, including Sixordle and Octordle ad-free access</p>
 
-  <div class="summary">
-    <p><strong>The short version:</strong> Sixordle Premium is $3.99/month or $39.99/year, removes the ads described below, bills automatically until you cancel, and isn't refundable. Payments are handled securely by Stripe — we never see your card details. A portion of subscription revenue supports carbon reduction once we hit a funding milestone. The full details are below, and by subscribing you agree to all of them.</p>
-  </div>
+  <section class="summary" aria-labelledby="summary-title">
+    <h2 id="summary-title">Before you subscribe</h2>
+    <p><strong>Current standard prices: US$0.99 per month or US$9.99 per year.</strong> Annual access is billed as one US$9.99 payment, not monthly instalments. Applicable taxes and any currency conversion shown at checkout may affect the total.</p>
+    <p><strong>This is a recurring subscription.</strong> It renews and charges automatically at the interval you select until cancelled. Cancelling stops future renewals; access normally continues through the paid period.</p>
+    <p><strong>Charges are final and non-refundable, with no voluntary prorated refunds</strong> for unused time, early cancellation, forgotten renewals or change of mind, except where a refund or another remedy is required by applicable law.</p>
+    <p><strong>You can pay without creating an account.</strong> Guest access is remembered in that browser. Clearing cookies, using private browsing or changing browsers/devices can remove access until it is restored. Those actions <strong>do not cancel billing</strong>. Saving an account after payment is optional and enables sign-in on other devices.</p>
+    <p><strong>Ad-free covers our third-party advertising on the covered Sixordle and Octordle game pages</strong> when your active subscription is recognised. It is not limited to particular ad formats or an old advertising provider.</p>
+    <p><strong>Billing help:</strong> <a href="mailto:contact@guessoword.com">contact@guessoword.com</a>. Our published climate commitment begins only after the <a href="#climate">US$10,000 subscription-revenue threshold</a>; it is not an added charge or a claim that every purchase immediately funds carbon removal.</p>
+  </section>
 
-  <h2>1. What This Policy Covers</h2>
-  <p>This Payment Policy governs Sixordle Premium and any other paid subscription, feature, or purchase available on guessoword.com or its subdomains (together, "Paid Features"). It supplements our <a href="terms.html">Terms of Service</a>. By starting a subscription or making a purchase, you confirm that you've read, understood, and agree to this policy in full, in addition to our Terms of Service and Privacy Policy.</p>
+  <nav class="policy-index" aria-label="Payment policy sections">
+    <h2>Find an answer</h2>
+    <ol>
+      <li><a href="#scope">Seller, scope and agreement</a></li>
+      <li><a href="#plans">Prices and plan comparison</a></li>
+      <li><a href="#checkout">Checkout, currency and taxes</a></li>
+      <li><a href="#renewals">Automatic renewal and price changes</a></li>
+      <li><a href="#ad-free">What ad-free includes</a></li>
+      <li><a href="#guest-access">Guest access and accounts</a></li>
+      <li><a href="#activation">Activation and payment problems</a></li>
+      <li><a href="#cancel">How to cancel</a></li>
+      <li><a href="#refunds">Refund policy</a></li>
+      <li><a href="#offers">Discounts, trials and plan changes</a></li>
+      <li><a href="#records">Receipts and payment records</a></li>
+      <li><a href="#security">Security and acceptable use</a></li>
+      <li><a href="#availability">Availability and service changes</a></li>
+      <li><a href="#disputes">Billing errors and disputes</a></li>
+      <li><a href="#climate">Climate contribution</a></li>
+      <li><a href="#eligibility">Eligibility and authorised payment</a></li>
+      <li><a href="#privacy">Payment information and privacy</a></li>
+      <li><a href="#liability">Warranties and liability</a></li>
+      <li><a href="#rights">Consumer rights and governing law</a></li>
+      <li><a href="#changes">Policy changes and contact</a></li>
+    </ol>
+  </nav>
 
-  <h2>2. What Sixordle Premium Includes</h2>
-  <p>Sixordle Premium is priced at <strong>$3.99 USD per month</strong> or <strong>$39.99 USD per year</strong> (billed upfront for the period selected). Its core benefit is an ad-free experience as described in Section 7. Core gameplay — puzzles, mechanics, statistics, and features available to free players — is otherwise the same for Premium and non-Premium players. Subscribing does not entitle you to new gameplay features, difficulty changes, or any other modification to the game beyond the ad experience described in this policy, unless we choose to add further perks at our discretion. We may introduce additional Premium benefits over time, but none beyond what's described here are guaranteed as part of your subscription.</p>
+  <section aria-labelledby="scope">
+    <h2 id="scope">1. Seller, scope and agreement</h2>
+    <p>This policy explains the payment terms offered by Guessoword ("we", "us" or "our") for optional subscriptions and other paid features on guessoword.com and its game subdomains ("Paid Features"). Our public billing contact is <a href="mailto:contact@guessoword.com">contact@guessoword.com</a>; general contact information is also available on our <a href="about.html">About page</a>.</p>
+    <p>The current ad-free subscription is offered for Sixordle and Octordle on <a href="https://sixordle.guessoword.com/">sixordle.guessoword.com</a>, including its <a href="https://sixordle.guessoword.com/octordle">Octordle pages</a>. You do not need to buy a separate subscription for each of those two games when using the same recognised browser or account. It does not automatically cover every other Guessoword game, website, third-party destination or future product. Any different paid product must identify what it includes and its price at checkout.</p>
+    <p>This policy supplements our <a href="terms.html">Terms of Service</a> and should be read with our <a href="privacy.html">Privacy Policy</a>. By submitting an order after being shown the applicable payment terms, you request the selected subscription and authorise the recurring charges disclosed at checkout. An unpaid checkout page or a failed payment alone is not a paid subscription. For subscription-specific matters, this policy controls over inconsistent general wording in the Terms of Service, subject always to mandatory law.</p>
+    <p>You may retain a copy of this page, your checkout disclosures, receipt and cancellation confirmation. Your browser's print or save function can create a copy for your records.</p>
+  </section>
 
-  <h2>3. Billing &amp; Renewal</h2>
-  <p>Subscriptions automatically renew at the end of each billing period (monthly or annual, matching your original selection) until you cancel. You'll be charged using the payment method on file at the start of each new period. We may change subscription pricing at any time; where required by law, we'll give you advance notice before a price change applies to your next renewal. Continuing your subscription after a price change takes effect means you accept the new price.</p>
+  <section aria-labelledby="plans">
+    <h2 id="plans">2. Current prices and plan comparison</h2>
+    <table>
+      <caption>Standard prices for new ad-free subscriptions, before applicable tax</caption>
+      <thead><tr><th scope="col">Plan</th><th scope="col">Charge</th><th scope="col">Billing interval</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Monthly</th><td>US$0.99</td><td>One charge each month until cancelled</td></tr>
+        <tr><th scope="row">Annual</th><td>US$9.99</td><td>One upfront charge each year until cancelled</td></tr>
+      </tbody>
+    </table>
+    <p>Twelve monthly payments at the current standard price total US$11.88. The annual plan costs US$1.89 less, a saving of approximately 15.9%, displayed as <strong>"Save 16%"</strong> after rounding. This comparison excludes taxes, currency conversion, discounts and any different legacy price. The annual price is not a monthly cancellation plan or twelve separate monthly payments.</p>
+    <p>Check the product, interval, currency and final total before submitting your order. A valid promotion or existing subscription may have a different price. The current standard prices do not retroactively reprice an older subscription or automatically replace the price recorded for an existing subscriber. Your checkout confirmation and billing records identify your plan.</p>
+  </section>
 
-  <h2>4. Payment Processing</h2>
-  <p>All payments are processed securely by <strong>Stripe, Inc.</strong>, a PCI-DSS-compliant third-party payment processor. We do not collect, see, or store your full card number or other sensitive payment details — that information is handled entirely by Stripe under its own security standards. By subscribing, you also agree to Stripe's own Services Agreement and Privacy Policy, available at <span class="fine">stripe.com</span>. We are not responsible for Stripe's acts, omissions, downtime, or policies.</p>
+  <section aria-labelledby="checkout">
+    <h2 id="checkout">3. Checkout, currency, taxes and third-party charges</h2>
+    <p>Payments are processed through <strong>Stripe</strong> using the payment methods it makes available for your transaction. Payment acceptance can depend on your location, card issuer, device and Stripe's checks. We do not add a separate account-creation or platform setup fee to the standard subscription price.</p>
+    <p>Our standard prices are in <strong>United States dollars (USD)</strong>. Stripe may offer a local-currency option or conversion at checkout. If you select one, review the currency, conversion information and amount displayed before authorising payment. We do not control your bank's exchange rate, foreign-transaction charges or any separate fees charged by your payment provider. The amount in your bank statement's currency can therefore differ from the USD list price.</p>
+    <p>Applicable sales taxes, GST, HST, VAT or similar government charges are determined using the billing information and rules applicable to your purchase. Checkout displays the taxes and final total before payment; where tax-inclusive pricing is legally required, those requirements apply. Supply accurate billing information and correct any errors before confirming the purchase.</p>
+    <p>Stripe's applicable customer terms and <a href="https://stripe.com/privacy">Privacy Policy</a> govern its own services. Stripe is our payment processor; questions about the game, subscription entitlement, cancellations or a billing error should be directed to Guessoword. Using Stripe does not remove our responsibilities as the seller.</p>
+  </section>
 
-  <h2>5. Cancellations</h2>
-  <p>You may cancel Sixordle Premium at any time. <strong>It is your responsibility to cancel</strong> if you no longer want the subscription — we don't send reminders before renewal, and a subscription left active will continue to renew and be charged automatically. Cancelling stops future renewals but does not end your current paid period early: you'll keep Premium access through the end of the period you've already paid for, with no partial-period refund or credit. Instructions for cancelling are available in your account settings or by contacting us via the details on our About page.</p>
+  <section aria-labelledby="renewals">
+    <h2 id="renewals">4. Automatic renewal, recurring authority and price changes</h2>
+    <p>Unless an offer expressly says otherwise, your subscription begins when the order is successfully accepted and payment or an expressly offered trial is confirmed. It then renews automatically at the selected monthly or annual interval until cancelled. You authorise us and Stripe to charge the payment method associated with the subscription for the disclosed recurring price and applicable taxes.</p>
+    <p>The next renewal or paid-period end shown in your billing portal or account is the relevant date for your subscription. Calendar dates, time zones, processing times and billing-month lengths can differ; do not assume that a renewal occurs at midnight in your local time. Keep your payment details and billing email current. We may retry a failed payment through Stripe and may suspend paid access if the subscription is no longer eligible for access.</p>
+    <p>We may change prices for future purchases. For an existing recurring subscription, a changed price applies only prospectively and with any notice, agreement or cancellation opportunity required by applicable law and your existing terms. Updating this page alone does not authorise an undisclosed retroactive charge. If you do not accept a properly notified future price, cancel before it takes effect.</p>
+    <p>Do not rely on a discretionary renewal reminder to manage a subscription. Any legally required notices will still be provided. A reminder not arriving, an unread email or a filtered message does not itself cancel the subscription or create an additional voluntary refund entitlement.</p>
+  </section>
 
-  <h2>6. Refund Policy</h2>
-  <p>All subscription charges are <strong>final and non-refundable</strong>, including for partial periods, unused time, accidental renewals you didn't cancel in time, or simple change of mind. We don't offer prorated refunds for early cancellation. The only exception is where a refund is required by applicable law in your jurisdiction — in that case, and only that case, the legally required remedy applies. If you believe you were charged in error (for example, a duplicate charge), contact us promptly and we'll look into it.</p>
+  <section aria-labelledby="ad-free">
+    <h2 id="ad-free">5. What ad-free access includes</h2>
+    <p>For a recognised, eligible subscription, we disable the third-party advertising integration on the covered Sixordle and Octordle game pages. This covers the third-party display, sidebar, bottom/adhesion, in-content and video placements that our integration would otherwise serve. Our free pages currently use <strong>Mediavine/Journey</strong> advertising services; the paid entitlement is not restricted to a particular provider's name or to only popunder or social-bar ads.</p>
+    <p>Covered paid game pages are not intentionally included in third-party ad-display tests. Ordinary navigation, links to our other games, account and billing controls, optional support/donation links, legally required notices, privacy or cookie choices and game content may remain. Advertising on an external site you choose to visit is outside this subscription. Ad-free does not mean that essential security, account, payment or permitted analytics functions stop operating.</p>
+    <p>The game may need to reload after payment, sign-in or a subscription-status change so it can recognise access and remove the advertising integration. If an ad remains on a covered page, refresh it in the purchasing browser or sign in to the saved account. If that does not resolve it, contact us with the affected page and a screenshot. This troubleshooting request does not waive any rights you have if the paid service is not supplied as promised.</p>
+    <p>The subscription does not include better odds, easier puzzles, guaranteed wins, exclusive words, new gameplay modes, cloud-saved game progress, or other gameplay benefits unless a specific offer expressly includes them. Local game saves and statistics remain subject to the game's normal storage behavior.</p>
+  </section>
 
-  <h2>7. The Ad Experience — What "Ad-Free" Means</h2>
-  <p>We want to be precise here, since this is the core value of Premium:</p>
-  <ul>
-    <li><strong>Guaranteed:</strong> as a Premium subscriber, you will not be served popunder or social bar advertisements from our advertising partner, Adsterra. This guarantee is absolute and applies for as long as your subscription is active.</li>
-    <li><strong>Occasional homepage tests:</strong> from time to time, and only during limited test phases, a minor, non-intrusive ad may still appear on the Guessoword homepage (not within gameplay itself). These test-phase ads are capped at a maximum frequency of once per week, and in practice most subscribers should expect to see zero ads at all during a given period. Gameplay itself is never interrupted, delayed, or distracted by advertising for Premium subscribers.</li>
-    <li>We reserve the right to run these limited, capped tests to help fund and improve Sixordle, without affecting your popunder/social-bar guarantee above.</li>
-  </ul>
+  <section aria-labelledby="guest-access">
+    <h2 id="guest-access">6. Guest checkout, browser access and optional accounts</h2>
+    <p><strong>You can purchase without creating a password or named game account.</strong> A secure browser session associates the purchase with the browser used for checkout. Subscription eligibility is checked on our server using the payment and subscription records; a locally editable preference alone does not establish paid access.</p>
+    <p>A guest session may be remembered for up to 400 days, but that is not a promise of uninterrupted cookie storage or an extension of the period you paid for. Browsers can impose shorter limits or delete cookies. Private/incognito sessions, clearing site data, browser resets, privacy tools, a different browser profile or changing devices can prevent recognition. <strong>Closing a tab, clearing a cookie, deleting an account, blocking ads or ceasing to play does not cancel a Stripe subscription.</strong></p>
+    <p>After payment, you can optionally save an email-and-password account, or sign in to an existing eligible account to link the purchase. Use the <strong>Account</strong> button and <strong>Save access across devices</strong> option when available. A saved account lets you restore subscription access by signing in on another browser or device. Using the same email at Stripe checkout does not, by itself, automatically sign you into an existing game account or merge separate purchases.</p>
+    <p>If guest access is lost before you saved an account, contact us using the checkout email and receipt details so we can investigate and verify ownership. Recovery is not an automatic email-only login, and we may need reasonable proof before linking or disclosing a purchase. <strong>Do not purchase a second subscription merely to troubleshoot lost access.</strong> Independent guest purchases or different accounts can otherwise create separate recurring subscriptions.</p>
+    <p>Protect your account credentials, keep your contact details accurate and sign out on shared devices. Do not share a browser session or account to resell or redistribute paid access. We may take proportionate steps to protect accounts and investigate unauthorised use, without limiting mandatory consumer protections.</p>
+  </section>
 
-  <h2>8. No Guarantee of Gameplay or Feature Changes</h2>
-  <p>Subscribing to Premium does not guarantee that the game will be "better," different, or expanded beyond the ad experience described above. We may improve, change, or leave gameplay as-is at our discretion, for both free and Premium players alike. Premium is, first and foremost, an ad-experience subscription.</p>
+  <section aria-labelledby="activation">
+    <h2 id="activation">7. Activation, failed payments and technical issues</h2>
+    <p>Paid access depends on confirmation from Stripe and an eligible subscription status. Opening checkout, an incomplete order, a declined payment, a temporary authorisation or a screenshot of a payment page does not by itself activate a subscription. Payment verification and status updates can take time, particularly if an issuer requires additional authentication or a payment method does not settle immediately.</p>
+    <p>Return to the game using the checkout confirmation flow and allow it to verify the subscription. If payment appears to have succeeded but access does not, refresh the original browser, try the saved account if you have one, and contact us before paying again. We may request the checkout email, date, amount, currency, receipt or invoice reference and a description of the issue.</p>
+    <p>Paid access can pause or end if a payment remains unsuccessful, the subscription expires or is cancelled, a transaction is reversed, or there is a verified entitlement or security issue. Resolving a billing problem may require updating the payment method or contacting the issuer. Our no-refund policy does not allow us to retain a payment where a refund or another remedy is legally required.</p>
+  </section>
 
-  <h2>9. Our Climate Contribution</h2>
-  <p>Once cumulative Guessoword <em>subscription</em> revenue (not advertising revenue) crosses <strong>$10,000 USD</strong>, we direct <strong>1% of subscription revenue</strong> toward carbon reduction efforts, facilitated through Stripe Climate and its partner organizations. A few important notes on this commitment:</p>
-  <ul>
-    <li>This is a voluntary contribution, not a term of your individual subscription contract, and doesn't entitle any individual subscriber to any specific outcome, credit, or offset.</li>
-    <li>We're committed to this program for the 2026 calendar year. We hope to continue it beyond that, but continuation isn't guaranteed indefinitely and may be adjusted or discontinued in future years at our discretion.</li>
-    <li>Advertising revenue is explicitly excluded from this commitment — only subscription revenue counts toward the 1% figure.</li>
-    <li>The mechanics of how contributed funds are used, verified, or allocated are determined by Stripe Climate and its partner organizations, not by us directly. For details on how contributions are used, please refer to Stripe Climate's own public disclosures.</li>
-  </ul>
+  <section aria-labelledby="cancel">
+    <h2 id="cancel">8. How to cancel and what cancellation does</h2>
+    <ol class="steps">
+      <li>Open Sixordle or Octordle in the purchasing browser, or sign in to the account where you saved the subscription.</li>
+      <li>Select <strong>Account</strong>, then <strong>Manage billing</strong> to open the Stripe billing portal.</li>
+      <li>Use the cancellation option and complete its confirmation steps. Check the resulting cancellation status and paid-period end date, and retain the confirmation.</li>
+    </ol>
+    <p>If the portal is unavailable, access is lost or you cannot locate the subscription, email <a href="mailto:contact@guessoword.com?subject=Subscription%20cancellation">contact@guessoword.com</a> with a clear cancellation request and enough information to identify the purchase. We may need to verify ownership. Contact us before the next renewal where possible, and allow time to resolve access problems; applicable legal cancellation rights and effective notice rules still govern.</p>
+    <p>Cancellation normally stops the next renewal and keeps ad-free access available until the end of the already paid period, as shown in the billing record. It does not usually reverse an already processed charge, convert an annual purchase into monthly payments, or produce a refund or credit for unused days. If a charge has already occurred, Section 9 and any applicable statutory remedies apply.</p>
+    <p>Deleting local game data, leaving the site, uninstalling a browser, cancelling a different subscription or simply removing a payment method is not a substitute for cancelling this subscription. If you have more than one separate subscription, review and cancel each one you no longer want. No future charge should be assumed cancelled until the cancellation has been completed or a valid cancellation notice has taken effect under applicable law.</p>
+  </section>
 
-  <h2>10. Chargebacks &amp; Payment Disputes</h2>
-  <p>If you have a billing concern, please contact us before filing a chargeback or dispute with your bank or card issuer — most issues can be resolved quickly and directly. We reserve the right to suspend or terminate access to Paid Features for accounts associated with fraudulent, abusive, or repeated unwarranted chargebacks, and to contest such chargebacks through Stripe.</p>
+  <section aria-labelledby="refunds">
+    <h2 id="refunds">9. Refund policy: final charges, no voluntary proration</h2>
+    <p><strong>All subscription charges are final and non-refundable, except where a refund is required by applicable law.</strong> We do not offer voluntary prorated refunds, credits, pauses or extensions for unused subscription time, early cancellation, infrequent use, dissatisfaction with a puzzle, a change of mind, or a renewal you forgot to cancel. An annual payment remains an annual purchase even if you stop playing partway through the year.</p>
+    <p>The same policy applies to an accidental selection or purchase, an unwanted renewal, duplicate subscriptions you independently started, loss of a browser session, account deletion, changing devices and deciding to use an ad blocker, <strong>to the extent the law permits</strong>. These examples do not turn an unauthorised transaction, an error in our billing or a failure to supply a legally required service into a valid charge.</p>
+    <p>Nothing here excludes any mandatory right to cancel, withdraw, obtain a refund, seek repair or another remedy, or dispute an unauthorised or incorrectly processed charge. Some jurisdictions provide statutory rights that depend on the circumstances of an online digital service, its disclosures, delivery or an express consent. We do not treat a general sentence in this policy as a substitute for any consent or notice the law specifically requires.</p>
+    <p>If you believe a charge is incorrect or a statutory refund right applies, contact us promptly with the transaction details and the reason. We will investigate and provide any remedy we are legally required to provide. Asking for a review does not itself promise a discretionary refund. Where a refund is due, processing is normally through the original payment method where practicable; bank and processor posting times can vary.</p>
+  </section>
 
-  <h2>11. Eligibility</h2>
-  <p>To subscribe, you must be able to enter into a legally binding contract in your jurisdiction and hold a valid payment method in your own name (or with explicit authorization to use it). If you are under the age of majority where you live, a parent or legal guardian must complete the subscription on your behalf and agrees to this policy in doing so.</p>
+  <section aria-labelledby="offers">
+    <h2 id="offers">10. Discounts, trials, gifts and plan changes</h2>
+    <p>No free trial, lifetime access, transferable licence or gift entitlement is included unless an offer expressly says so. A promotion code may have eligibility, duration, redemption and renewal conditions. A temporary discount does not mean every renewal will use that price; review the post-promotion recurring amount before accepting the offer.</p>
+    <p>Monthly and annual are separate billing choices. If a plan-change option is offered, review its effective date and any charge or credit shown before confirming. We do not promise that every type of change, proration or pause is supported. Starting another checkout is not the same as modifying or cancelling an existing subscription and may create a separate purchase.</p>
+    <p>We may correct an offer or pricing error before an order is accepted, or take a lawful corrective step after discovering an error. This does not authorise us to silently charge a higher amount or override a consumer remedy. A business-issued promotion, credit or any legally required correction is not a general change to the refund policy.</p>
+  </section>
 
-  <h2>12. Taxes</h2>
-  <p>Listed prices may not include applicable sales tax, VAT, GST, or similar charges. Where required, such taxes are calculated and collected at checkout by Stripe based on your billing location.</p>
+  <section aria-labelledby="records">
+    <h2 id="records">11. Receipts, billing information and records</h2>
+    <p>Use an email address you can access at checkout and keep the receipt or invoice reference. Stripe and its billing portal may provide transaction records, invoices, payment-method management and cancellation confirmations. Check your email, including filtered folders, and the billing portal if you cannot find a record. Contact us if you need help identifying a charge or obtaining information we are required to provide.</p>
+    <p>The merchant or statement description shown by your issuer may use Guessoword or Sixordle branding and can be abbreviated by the issuer. Check the date, currency and amount as well as the description. Separate taxes, currency choices or issuer conversions should be checked against the checkout confirmation.</p>
+    <p>For support, provide only information reasonably needed to locate and verify the transaction. <strong>Do not email a full card number, card security code, password, bank-login credentials or a browser session cookie.</strong> We will not ask you to disclose those secrets by email.</p>
+  </section>
 
-  <h2>13. Changes to This Policy</h2>
-  <p>We may update this Payment Policy, including pricing, features, or the terms of our climate contribution, at any time. Material changes will be posted here with an updated revision date, and where required by law, communicated to active subscribers in advance. Continued use of Paid Features after a change takes effect constitutes acceptance of the updated policy.</p>
+  <section aria-labelledby="security">
+    <h2 id="security">12. Security, misuse and suspension</h2>
+    <p>You may use only a payment method you are authorised to use. You must not submit fraudulent orders, make knowingly false billing claims, attempt to forge subscription status, interfere with checkout, or sell or redistribute account access contrary to our Terms of Service. Reasonable security checks may be used to protect customers and the service.</p>
+    <p>Where justified, we may investigate or restrict access affected by suspected fraud, compromised credentials, unauthorised sharing or a payment reversal. Restrictions should be proportionate to the issue and are subject to applicable law. We may ask for verification before changing account ownership or giving someone billing information. A good-faith complaint or lawful exercise of consumer rights is not, by itself, misuse.</p>
+  </section>
 
-  <h2>14. Limitation of Liability</h2>
-  <p>To the fullest extent permitted by law, Guessoword's total liability arising from or related to your subscription or any Paid Feature is limited to the amount you paid us in the three (3) months preceding the claim. We are not liable for indirect, incidental, special, or consequential damages arising from your subscription, billing, or use of Paid Features.</p>
+  <section aria-labelledby="availability">
+    <h2 id="availability">13. Availability, maintenance and service changes</h2>
+    <p>These are online browser-based games. We do not promise uninterrupted service, compatibility with every device or extension, permanent availability of a particular puzzle or layout, preservation of all local data, or a particular support response time. Maintenance, network failures, browser restrictions, third-party outages and security work can temporarily affect access.</p>
+    <p>We may improve or change the service, but an "as available" description does not remove our obligation to supply a paid feature as required by law. If we discontinue a paid feature or cannot supply it during a paid period, we will provide any notice, cancellation opportunity, refund or other remedy required by applicable law. This policy does not promise a discretionary service-level credit or additional compensation beyond what your agreement or the law requires.</p>
+  </section>
 
-  <h2>15. Governing Law</h2>
-  <p>This policy is governed by the laws of the Province of Ontario, Canada, without regard to conflict of law principles, consistent with our <a href="terms.html">Terms of Service</a>.</p>
+  <section aria-labelledby="disputes">
+    <h2 id="disputes">14. Billing errors, unauthorised charges and disputes</h2>
+    <p>If a charge looks wrong, please contact us promptly so we can review it. Include the checkout email, charge date, amount and currency, receipt or invoice reference if available, and a short explanation. Useful examples include a charge after an effective cancellation, a processing duplicate, an unexpected plan or an order you did not authorise.</p>
+    <p>Contacting us first can help resolve a genuine error, but it is <strong>not a condition of any non-waivable right</strong> to contact your bank, card issuer, regulator or a court, and it does not extend any statutory or issuer deadline. We may provide relevant order, payment, access and cancellation records to Stripe, the payment provider or an authorised dispute process, consistent with applicable law.</p>
+    <p>We may contest a chargeback where the records support doing so and may take reasonable action against verified fraudulent conduct. We will not describe every disputed charge as fraud or claim that this policy eliminates lawful chargeback, complaint or court rights. Avoid paying for the same period a second time while a billing issue is being investigated.</p>
+  </section>
 
-  <h2>16. Contact Us</h2>
-  <p>Questions about billing, cancellations, or this policy can be sent to the contact information listed on our <a href="about.html">About page</a>.</p>
+  <section aria-labelledby="climate">
+    <h2 id="climate">15. Climate contribution: US$10,000 threshold</h2>
+    <p>Our published commitment for the <strong>2026 calendar year</strong> is to direct <strong>1% of qualifying subscription revenue toward carbon-removal efforts through Stripe Climate after cumulative Guessoword subscription revenue exceeds US$10,000</strong>. Advertising revenue is excluded. This is a business-funded commitment, not an additional customer fee, and it does not mean 1% of every payment immediately funds a contribution before that threshold is reached.</p>
+    <p>For this purpose, subscription revenue excludes taxes collected for authorities and payments that are refunded, reversed or not successfully collected. The threshold is assessed in USD using our payment records. We do not promise a retroactive 1% contribution on all revenue earned before the threshold; the percentage applies prospectively after the threshold is met during the commitment period. We do not state here that the threshold has already been reached or that a particular contribution has already been made.</p>
+    <p>This commitment does not provide you with a charitable receipt, ownership of carbon credits, a specified quantity of carbon removal, an individual offset or a claim that your gameplay or payment is carbon-neutral. Program selection, timing and delivery depend on Stripe Climate and its partners; see <a href="https://stripe.com/climate">Stripe Climate</a> for its own program information.</p>
+    <p>The program is voluntary and does not purchase an additional gameplay benefit. Continuation after 2026 is not guaranteed. Any later change will be described prospectively and will not excuse a contribution already committed under the terms that applied or override a mandatory consumer right.</p>
+  </section>
+
+  <section aria-labelledby="eligibility">
+    <h2 id="eligibility">16. Eligibility and authorised payment</h2>
+    <p>You must be legally able to enter into the purchase agreement and use the selected payment method. If you are under the age of majority where you live, a parent or legal guardian must make or authorise the purchase as required by law and is responsible for the subscription they enter into. A game being available to play for free does not give a child authority to start recurring billing.</p>
+    <p>We may decline or cancel an order where payment cannot be accepted lawfully, verification fails or there is a genuine security or fraud concern, subject to any notice, refund or other obligation that applies. You are responsible for supplying accurate information; we remain responsible for our own legally required disclosures and conduct.</p>
+  </section>
+
+  <section aria-labelledby="privacy">
+    <h2 id="privacy">17. Payment information, accounts and privacy</h2>
+    <p>Card entry and payment authentication take place through Stripe and relevant payment providers. We do not receive or store your full card number or card security code through our subscription checkout. We do process information needed to administer access and billing, such as account email and a protected password record if you save an account, session records, subscription/customer references, status, renewal or cancellation details, and relevant support correspondence.</p>
+    <p>Browser storage is used for access recognition and may separately hold local game progress. Permitted analytics can measure aggregate subscription steps such as opening an offer, beginning checkout and a confirmed purchase; ad-free access is not a promise of zero operational data processing. Our <a href="privacy.html">Privacy Policy</a> describes our privacy practices, and Stripe explains its own practices in its <a href="https://stripe.com/privacy">Privacy Policy</a>. Applicable privacy choices and legal requirements continue to apply.</p>
+  </section>
+
+  <section aria-labelledby="liability">
+    <h2 id="liability">18. Warranties and limitation of liability</h2>
+    <p>To the fullest extent permitted by applicable law, the games and related online functions are provided "as is" and "as available", and we do not give additional warranties about uninterrupted operation, fitness for a particular purpose, a particular game result or features not expressly included in the purchase.</p>
+    <p>To the fullest extent permitted by law, Guessoword is not liable for indirect, incidental, special or consequential losses, such as loss of expected enjoyment, profits or data, arising from a Paid Feature. Subject to the exceptions below, our aggregate liability arising from or relating to a subscription or Paid Feature is limited to the amount you paid us for the affected subscription or Paid Feature in the <strong>three (3) months preceding the event giving rise to the claim</strong>.</p>
+    <p><strong>These limitations apply only where lawful.</strong> They do not exclude or restrict mandatory consumer guarantees, refunds or remedies, liability for fraud or wilful misconduct, or any other liability the law does not permit us to exclude or limit. They do not turn a promised paid entitlement into an optional service or prevent a legally available remedy for failing to supply it.</p>
+  </section>
+
+  <section aria-labelledby="rights">
+    <h2 id="rights">19. Mandatory consumer rights and governing law</h2>
+    <p>This policy is governed by the laws of the Province of Ontario and the applicable federal laws of Canada, without depriving you of mandatory protections that apply where you live. Any dispute may be brought before a court or other body with jurisdiction under applicable law.</p>
+    <p>Nothing in this policy requires you to waive a non-waivable statutory warranty, cooling-off or withdrawal right, right concerning non-delivery or misleading conduct, right to a legally required refund, or lawful access to a regulator, court or collective proceeding. Where a provision conflicts with mandatory law, the mandatory rule prevails and the provision applies only to the extent lawful. The rest of the policy remains in effect where it can operate lawfully.</p>
+    <p>There is no additional voluntary cooling-off period or satisfaction-guarantee program unless an express offer says otherwise. This does not deny one that the law provides in your circumstances. Contact us if you believe a statutory right applies; you are not required to accept a discretionary substitute for the remedy the law gives you.</p>
+  </section>
+
+  <section aria-labelledby="changes">
+    <h2 id="changes">20. Policy changes and contact</h2>
+    <p>We may update this policy to reflect changes in the service, payment processes or law. The effective date appears at the top. Changes operate prospectively, subject to the terms of an existing subscription and any notice or consent required by law. Publishing a revised policy or a customer's silence does not substitute for legally required notice or agreement to a material change.</p>
+    <p>For billing, cancellation, access recovery, a suspected error or a rights request, email <a href="mailto:contact@guessoword.com">contact@guessoword.com</a>. Include the relevant game, checkout email, date, amount/currency and receipt reference where available; do not send sensitive payment credentials. Additional contact information is on our <a href="about.html">About page</a>.</p>
+    <p class="fine">Keep a copy of the terms shown when you subscribe and the resulting receipt. This page explains our offer and policies; it does not limit rights or obligations that applicable law makes mandatory.</p>
+  </section>
 </main>
+
 
 <footer>
   <span>© 2026 Guessoword · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="payments.html">Payments</a></span>
-  <span>Developed by Savir Singh</span>
 </footer>
 
 </body>
